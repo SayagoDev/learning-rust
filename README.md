@@ -9,9 +9,9 @@
     - [Functions](#functions)
     - [Println Macro](#println-macro)
     - [Control flow using `if`](#control-flow-using-if)
-      - [Example - `if..else`](#example---ifelse)
-      - [Example - Nested `if..else`](#example---nested-ifelse)
-      - [Example - `else..if`](#example---elseif)
+      - [Example - `if..else`](#example-ifelse)
+      - [Example - Nested `if..else`](#example-nested-ifelse)
+      - [Example - `else..if`](#example-elseif)
 
 ## Fundamentals
 
