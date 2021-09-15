@@ -9,9 +9,9 @@
     - [Functions](#functions)
     - [Println Macro](#println-macro)
     - [Control flow using `if`](#control-flow-using-if)
-      - [Example - `if..else`](#example-ifelse)
-      - [Example - Nested `if..else`](#example-nested-ifelse)
-      - [Example - `else..if`](#example-elseif)
+      - [Example `if..else`](#example-ifelse)
+      - [Example Nested `if..else`](#example-nested-ifelse)
+      - [Example `else..if`](#example-elseif)
 
 ## Fundamentals
 
@@ -74,7 +74,7 @@ println!("{:?} {:?}", life, life);
         * `else`
         * `else if`
 
-#### Example - `if..else`
+#### Example `if..else`
 ```rust
 let a = 99;
 if a > 99 {
@@ -85,7 +85,7 @@ if a > 99 {
 
 ```
 
-#### Example - Nested `if..else`
+#### Example Nested `if..else`
 
 ```rust
 let a = 99;
@@ -100,7 +100,7 @@ if a > 99 {
 }
 ```
 
-#### Example - `else..if`
+#### Example `else..if`
 
 ```rust
 let a = 99;
