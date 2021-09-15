@@ -1,5 +1,18 @@
 # RUST
 
+## Index
+- [RUST](#rust)
+  - [Index](#index)
+  - [Fundamentals](#fundamentals)
+    - [Data Types](#data-types)
+    - [Variables](#variables)
+    - [Functions](#functions)
+    - [Println Macro](#println-macro)
+    - [Control flow using `if`](#control-flow-using-if)
+      - [Example - `if..else`](#example---ifelse)
+      - [Example - Nested `if..else`](#example---nested-ifelse)
+      - [Example - `else..if`](#example---elseif)
+
 ## Fundamentals
 
 ### Data Types
@@ -53,15 +66,15 @@ println!("{:?}", life);
 println!("{:?} {:?}", life, life);
 ```
 
-### Control flow using "if"
+### Control flow using `if`
 * Code executed line-by-line
-* Actions are performed & control flow may change 
+* Actions are performed & control flow may change
     * Specific conditions can change control flow
         * `if`
         * `else`
         * `else if`
 
-#### Example - if..else
+#### Example - `if..else`
 ```rust
 let a = 99;
 if a > 99 {
@@ -72,7 +85,7 @@ if a > 99 {
 
 ```
 
-#### Example - Nested if..else
+#### Example - Nested `if..else`
 
 ```rust
 let a = 99;
@@ -81,13 +94,13 @@ if a > 99 {
         println!("Huge number");
     } else {
         println!("Big number");
-    }   
+    }
 } else {
     println!("Small number");
 }
 ```
 
-#### Example - else..if
+#### Example - `else..if`
 
 ```rust
 let a = 99;
