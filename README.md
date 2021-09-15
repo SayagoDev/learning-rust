@@ -52,3 +52,50 @@ println!("hello");
 println!("{:?}", life);
 println!("{:?} {:?}", life, life);
 ```
+
+### Control flow using "if"
+* Code executed line-by-line
+* Actions are performed & control flow may change 
+    * Specific conditions can change control flow
+        * `if`
+        * `else`
+        * `else if`
+
+#### Example - if..else
+```rust
+let a = 99;
+if a > 99 {
+    println!("Big number");
+} else {
+    println!("Small number");
+}
+
+```
+
+#### Example - Nested if..else
+
+```rust
+let a = 99;
+if a > 99 {
+    if a > 200 {
+        println!("Huge number");
+    } else {
+        println!("Big number");
+    }   
+} else {
+    println!("Small number");
+}
+```
+
+#### Example - else..if
+
+```rust
+let a = 99;
+if a > 200 {
+    println!("Huge number");
+} else if a > 99 {
+    println!("Big number");
+} else {
+    println!("Small number");
+}
+```
