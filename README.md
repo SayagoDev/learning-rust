@@ -12,6 +12,7 @@
       - [Example `if..else`](#example-ifelse)
       - [Example Nested `if..else`](#example-nested-ifelse)
       - [Example `else..if`](#example-elseif)
+    - [Repetition using loops](#repetition-using-loops)
 
 ## Fundamentals
 
@@ -110,5 +111,31 @@ if a > 200 {
     println!("Big number");
 } else {
     println!("Small number");
+}
+```
+
+### Repetition using loops
+* Called "lopping" or "iteration"
+* Multiple types of loops
+    * `loop` - infinite loop
+    * `while` - conditional loop
+
+**Loop:**
+```rust
+let mut a = 0;
+loop {
+    if a == 5 {
+        break;
+    }
+    println!("{:?}", a);
+    a = a + 1;
+}
+```
+**While loop:**
+```rust
+let mut a = 0;
+while a != 5 {
+    println!("{:?}", a);
+    a = a + 1;
 }
 ```
