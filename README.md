@@ -160,7 +160,7 @@ fn main() {
 }
 ```
 
-** Example with int:**
+**Example with int:**
 ```rust
 fn main() {
     let some_int = 3;
