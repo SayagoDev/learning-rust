@@ -120,7 +120,7 @@ if a > 200 {
     * `loop` - infinite loop
     * `while` - conditional loop
 
-**Loop:**
+**Loop**:
 ```rust
 let mut a = 0;
 loop {
