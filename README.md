@@ -16,6 +16,8 @@
     - [Match](#match)
       - [`match` vs `else..if`](#match-vs-elseif)
       - [Match recap](#match-recap)
+  - [Working With Data](#working-with-data)
+    - [Enumeration (enum)](#enumeration-enum)
 
 ## Fundamentals
 
@@ -160,7 +162,7 @@ fn main() {
 }
 ```
 
-** Example with int:**
+**Example with int:**
 ```rust
 fn main() {
     let some_int = 3;
@@ -184,3 +186,30 @@ fn main() {
 * `match` considers all possibilities
     * More robust code
 * Use underscore (_) to match "anything else"
+
+## Working With Data
+
+### Enumeration (enum)
+* Data that can be one of multiple different possibilities
+    * Each possibility is called a _**variant**_
+* Provides information about your program to the compiler
+    * More robust programs
+
+**Example:**
+```rust
+enum Direction {
+    Up,
+    Down,
+    Left,
+    Right
+}
+
+fn which_way(go: Direction) {
+    match go {
+        Direction::Up => "up",
+        Direction::Down => "down",
+        Direction::Left => "left",
+        Direction::Right => "right",
+    }
+}
+```
