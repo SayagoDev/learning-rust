@@ -18,6 +18,7 @@
       - [Match recap](#match-recap)
   - [Working With Data](#working-with-data)
     - [Enumeration (enum)](#enumeration-enum)
+      - [Enums recap](#enums-recap)
 
 ## Fundamentals
 
@@ -213,3 +214,8 @@ fn which_way(go: Direction) {
     }
 }
 ```
+
+#### Enums recap
+* Enums can only be one variant at a time
+* More robust programs when paired with `match`
+* Make program code easier to read
