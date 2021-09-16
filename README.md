@@ -17,8 +17,10 @@
       - [`match` vs `else..if`](#match-vs-elseif)
       - [Match recap](#match-recap)
   - [Working With Data](#working-with-data)
-    - [Enumeration (enum)](#enumeration-enum)
+    - [Enumeration `enum`](#enumeration-enum)
       - [Enums recap](#enums-recap)
+    - [Structure `struct`](#structure-struct)
+      - [Structs recap](#structs-recap)
 
 ## Fundamentals
 
@@ -190,7 +192,7 @@ fn main() {
 
 ## Working With Data
 
-### Enumeration (enum)
+### Enumeration `enum`
 * Data that can be one of multiple different possibilities
     * Each possibility is called a _**variant**_
 * Provides information about your program to the compiler
@@ -219,3 +221,34 @@ fn which_way(go: Direction) {
 * Enums can only be one variant at a time
 * More robust programs when paired with `match`
 * Make program code easier to read
+
+### Structure `struct`
+* A type that contains multiple pieces of data
+    * All or nothing - cannot have some pieces of data and not others
+* Each piece of data is called a _**field**_
+* Makes working with data easier
+    * Similar data can be grouped together
+
+**Example:**
+```rust
+struct ShippingBox {
+    depth: i32,
+    width: i32,
+    height: i32,
+}
+
+fn main() {
+    let my_box = ShippingBox {
+        depth: 3,
+        width: 2,
+        height: 5,
+    }
+    let tall = my_box.height; // 5
+    println!("the box is {:?} units tall", tall);
+}
+```
+
+#### Structs recap
+* Structs deal with multiple pieces of data
+* All fields must be present to create a `struct`
+* Fields can be accessed using a dot (.)
