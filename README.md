@@ -25,12 +25,12 @@
         - [Tuples recap](#tuples-recap)
       - [Expressions](#expressions)
         - [Expressions recap](#expressions-recap)
-      - [Basic memory refresh](#basic-memory-refresh)
+      - [Intermediate Memory](#intermediate-memory)
         - [Addresses](#addresses)
         - [Offsets](#offsets)
         - [Basic memory refresh recap](#basic-memory-refresh-recap)
-      - [Managing memory](#managing-memory)
-        - [Managing memory recap](#managing-memory-recap)
+      - [Ownership](#ownership)
+        - [Ownership recap](#ownership-recap)
 
 ## Fundamentals
 
@@ -353,7 +353,8 @@ let order_placed = match item {
 * `if` and `match` expressions can be nested
     * Best to not use more than two or three levels
 
-#### Basic memory refresh
+#### Intermediate Memory
+**Basic memory refresh:**
 * Memory is stored using binary
     * Bits: 0 or 1
 * Computer optimized for bytes
@@ -386,7 +387,8 @@ let order_placed = match item {
 
 
 
-#### Managing memory
+#### Ownership
+**Managing memory:**
 * Programs must track memory
     * If they fail to do so, a "leak" occurs
 * Rust utilizes an "ownership" model to manage memory
@@ -435,7 +437,7 @@ fn main() {
 }
 ```
 
-##### Managing memory recap
+##### Ownership recap
 * Memory must be managed in some way to present leaks
 * Rust uses "ownership" to accomplish memory management
     * The "owner" of data must clean up the memory
