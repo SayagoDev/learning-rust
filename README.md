@@ -242,7 +242,7 @@ fn main() {
         depth: 3,
         width: 2,
         height: 5,
-    }
+    };
     let tall = my_box.height; // 5
     println!("the box is {:?} units tall", tall);
 }
