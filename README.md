@@ -21,6 +21,8 @@
       - [Enums recap](#enums-recap)
     - [Structure `struct`](#structure-struct)
       - [Structs recap](#structs-recap)
+    - [Tuples](#tuples)
+      - [Tuples recap](#tuples-recap)
 
 ## Fundamentals
 
@@ -252,3 +254,37 @@ fn main() {
 * Structs deal with multiple pieces of data
 * All fields must be present to create a `struct`
 * Fields can be accessed using a dot (.)
+
+### Tuples
+* A type of "record"
+* Store data anonymously
+    * No need to name fields
+* Useful to return paris of data from functions
+* Can be "destructured" easily into variables
+
+**Example:**
+```rust
+enum Access {
+    Full,
+}
+
+fn one_two_three() -> (i32, i32, i32) {
+    (1, 2, 3)
+}
+
+fn main() {
+    let numbers = one_two_three();
+    let (x, y, z) = one_two_three();
+    println!("{:?}, {:?}", x, numbers.0); // 1
+    println!("{:?}, {:?}", y, numbers.1); // 2
+    println!("{:?}, {:?}", z, numbers.2); // 3
+
+    let (employee, access) = ("Jake", Access::Full);
+}
+```
+
+#### Tuples recap
+* Allow for anonymous data access
+* Useful when destructuring
+* Can contain any number of fields
+    * Use `struct` when more than 2 or 3 fields
