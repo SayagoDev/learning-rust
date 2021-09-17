@@ -16,13 +16,15 @@
     - [Match](#match)
       - [`match` vs `else..if`](#match-vs-elseif)
       - [Match recap](#match-recap)
-  - [Working With Data](#working-with-data)
-    - [Enumeration `enum`](#enumeration-enum)
-      - [Enums recap](#enums-recap)
-    - [Structure `struct`](#structure-struct)
-      - [Structs recap](#structs-recap)
-    - [Tuples](#tuples)
-      - [Tuples recap](#tuples-recap)
+    - [Working With Data](#working-with-data)
+      - [Enumeration `enum`](#enumeration-enum)
+        - [Enums recap](#enums-recap)
+      - [Structure `struct`](#structure-struct)
+        - [Structs recap](#structs-recap)
+      - [Tuples](#tuples)
+        - [Tuples recap](#tuples-recap)
+      - [Expressions](#expressions)
+        - [Expressions recap](#expressions-recap)
 
 ## Fundamentals
 
@@ -192,9 +194,9 @@ fn main() {
     * More robust code
 * Use underscore (_) to match "anything else"
 
-## Working With Data
+### Working With Data
 
-### Enumeration `enum`
+#### Enumeration `enum`
 * Data that can be one of multiple different possibilities
     * Each possibility is called a _**variant**_
 * Provides information about your program to the compiler
@@ -219,12 +221,12 @@ fn which_way(go: Direction) {
 }
 ```
 
-#### Enums recap
+##### Enums recap
 * Enums can only be one variant at a time
 * More robust programs when paired with `match`
 * Make program code easier to read
 
-### Structure `struct`
+#### Structure `struct`
 * A type that contains multiple pieces of data
     * All or nothing - cannot have some pieces of data and not others
 * Each piece of data is called a _**field**_
@@ -250,12 +252,12 @@ fn main() {
 }
 ```
 
-#### Structs recap
+##### Structs recap
 * Structs deal with multiple pieces of data
 * All fields must be present to create a `struct`
 * Fields can be accessed using a dot (.)
 
-### Tuples
+#### Tuples
 * A type of "record"
 * Store data anonymously
     * No need to name fields
@@ -283,8 +285,64 @@ fn main() {
 }
 ```
 
-#### Tuples recap
+##### Tuples recap
 * Allow for anonymous data access
 * Useful when destructuring
 * Can contain any number of fields
     * Use `struct` when more than 2 or 3 fields
+
+#### Expressions
+* Rust is an expression-based language
+    * Most things are evaluated and return some value
+* Expression values coalesce to a single point
+    * Can be used for nesting logic
+
+**Examples:**
+```rust
+let my_num = 3;
+let is_lt_5 = if my_num < 5 {
+    true
+} else {
+    false
+};
+
+// or
+
+let is_lt_5 = my_num < 5;
+
+```
+
+```rust
+let my_num = 3;
+let message = match my_num {
+    1 => "hello",
+    _ => "goodbye"
+}
+```
+
+```rust
+enum Menu {
+    Burger,
+    Fries,
+    Drink,
+}
+
+let paid = true;
+let item = Menu::Drink;
+let drink_type = "water";
+let order_placed = match item {
+    Menu::Drink => {
+        if drink_type == "water" {
+            true
+        } else {
+            false
+        }
+    }
+    _ => true,
+};
+```
+
+##### Expressions recap
+* Expressions allow nested logic
+* `if` and `match` expressions can be nested
+    * Best to not use more than two or three levels
