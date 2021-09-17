@@ -25,6 +25,12 @@
         - [Tuples recap](#tuples-recap)
       - [Expressions](#expressions)
         - [Expressions recap](#expressions-recap)
+      - [Basic memory refresh](#basic-memory-refresh)
+        - [Addresses](#addresses)
+        - [Offsets](#offsets)
+        - [Basic memory refresh recap](#basic-memory-refresh-recap)
+      - [Managing memory](#managing-memory)
+        - [Managing memory recap](#managing-memory-recap)
 
 ## Fundamentals
 
@@ -346,3 +352,93 @@ let order_placed = match item {
 * Expressions allow nested logic
 * `if` and `match` expressions can be nested
     * Best to not use more than two or three levels
+
+#### Basic memory refresh
+* Memory is stored using binary
+    * Bits: 0 or 1
+* Computer optimized for bytes
+    * 1 byte == 8 contiguous bits
+* Fully contiguous
+
+##### Addresses
+* All data in memory has an "address"
+    * Used to locate data
+    * Always the same - only data changes
+* Usually don't utilize addresses directly
+    * Variables handle most of the work
+
+##### Offsets
+* Items can be located at and address using an "offset"
+* Offsets begin at 0
+* Represent the number of bytes away from the original address
+    * Normally deal with indexes instead
+
+![Addresses & Offsets](./images/address&offsets.png)
+
+##### Basic memory refresh recap
+* Memory uses addresses & offsets
+* Addresses are permanent, data differs
+* Offsets can be used to "index" into some data
+
+
+
+
+
+
+
+#### Managing memory
+* Programs must track memory
+    * If they fail to do so, a "leak" occurs
+* Rust utilizes an "ownership" model to manage memory
+    * The "owner" of memory is responsible f9or cleaning up the memory
+* Memory can either be ¨"moved" or "borrowed"
+
+**Example - Move (error):**
+```rust
+enum Light {
+    Bright,
+    Dull,
+}
+
+fn display_light(light: Light) {
+    match light {
+        Light::Bright => println!("bright");
+        Light::Dull => println!("dull");
+    }
+}
+
+fn main() {
+    let dull = Light:Dull;
+    display_light(dull);
+    display_light(dull);
+}
+```
+
+**Example - Borrow:**
+```rust
+enum Light {
+    Bright,
+    Dull,
+}
+
+fn display_light(light: &Light) {
+    match light {
+        Light::Bright => println!("bright");
+        Light::Dull => println!("dull");
+    }
+}
+
+fn main() {
+    let dull = Light:Dull;
+    display_light(&dull);
+    display_light(&dull);
+}
+```
+
+##### Managing memory recap
+* Memory must be managed in some way to present leaks
+* Rust uses "ownership" to accomplish memory management
+    * The "owner" of data must clean up the memory
+    * This occurs automatically at the end of the scope
+* Default behavior is to "move" memory to a new owner
+    * Use and ampersand (&) to allow code to "borrow" memory
