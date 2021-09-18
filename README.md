@@ -379,7 +379,7 @@ let order_placed = match item {
 * Programs must track memory
     * If they fail to do so, a _**leak**_ occurs
 * Rust utilizes an _**ownership**_ model to manage memory
-    * The _**owner**_ of memory is responsible f9or cleaning up the memory
+    * The _**owner**_ of memory is responsible for cleaning up the memory
 * Memory can either be _**moved**_ or _**borrowed**_
 
 **Example - Move ❌:**
@@ -427,7 +427,7 @@ fn main() {
 #### 1.8.6.1. Ownership recap
 * Memory must be managed in some way to present leaks
 * Rust uses _**ownership**_ to accomplish memory management
-    * The "owner" of data must clean up the memory
+    * The _**owner**_ of data must clean up the memory
     * This occurs automatically at the end of the scope
 * Default behavior is to _**move**_ memory to a new owner
     * Use and ampersand _**&**_ to allow code to _**borrow**_ memory
