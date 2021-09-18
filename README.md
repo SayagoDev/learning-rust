@@ -18,14 +18,14 @@
       - [1.8.2.1. Structs recap](#1821-structs-recap)
     - [1.8.3. Tuples](#183-tuples)
       - [1.8.3.1. Tuples recap](#1831-tuples-recap)
-    - [1.8.4. Expressions](#184-expressions)
-      - [1.8.4.1. Expressions recap](#1841-expressions-recap)
-    - [1.8.5. Intermediate Memory](#185-intermediate-memory)
-      - [1.8.5.1. Addresses](#1851-addresses)
-      - [1.8.5.2. Offsets](#1852-offsets)
-      - [1.8.5.3. Intermediate Memory recap](#1853-intermediate-memory-recap)
-    - [1.8.6. Ownership](#186-ownership)
-      - [1.8.6.1. Ownership recap](#1861-ownership-recap)
+  - [1.9. Expressions](#19-expressions)
+    - [1.9.1. Expressions recap](#191-expressions-recap)
+  - [1.10. Intermediate Memory](#110-intermediate-memory)
+    - [1.10.1. Addresses](#1101-addresses)
+    - [1.10.2. Offsets](#1102-offsets)
+    - [1.10.3. Intermediate Memory recap](#1103-intermediate-memory-recap)
+  - [1.11. Ownership](#111-ownership)
+    - [1.11.1. Ownership recap](#1111-ownership-recap)
 
 # 1. Fundamentals
 
@@ -290,7 +290,7 @@ fn main() {
 * Can contain any number of fields
     * Use `struct` when more than 2 or 3 fields
 
-### 1.8.4. Expressions
+## 1.9. Expressions
 * Rust is an expression-based language
     * Most things are evaluated and return some value
 * Expression values coalesce to a single point
@@ -341,12 +341,12 @@ let order_placed = match item {
 };
 ```
 
-#### 1.8.4.1. Expressions recap
+### 1.9.1. Expressions recap
 * Expressions allow nested logic
 * `if` and `match` expressions can be nested
     * Best to not use more than two or three levels
 
-### 1.8.5. Intermediate Memory
+## 1.10. Intermediate Memory
 **Basic memory refresh:**
 * Memory is stored using binary
     * Bits: _0_ or _1_
@@ -354,14 +354,14 @@ let order_placed = match item {
     * _1_ byte == _8_ _contiguous bits_
 * Fully contiguous
 
-#### 1.8.5.1. Addresses
+### 1.10.1. Addresses
 * All data in memory has an _**address**_
     * Used to locate data
     * Always the same - only data changes
 * Usually don't utilize addresses directly
     * Variables handle most of the work
 
-#### 1.8.5.2. Offsets
+### 1.10.2. Offsets
 * Items can be located at and address using an _**offset**_
 * Offsets begin at 0
 * Represent the number of bytes away from the original address
@@ -369,12 +369,12 @@ let order_placed = match item {
 
 ![Addresses & Offsets](./images/address&offsets.png)
 
-#### 1.8.5.3. Intermediate Memory recap
+### 1.10.3. Intermediate Memory recap
 * Memory uses addresses & offsets
 * Addresses are permanent, data differs
-* Offsets can be used to "index" into some data
+* Offsets can be used to _**index**_ into some data
 
-### 1.8.6. Ownership
+## 1.11. Ownership
 **Managing memory:**
 * Programs must track memory
     * If they fail to do so, a _**leak**_ occurs
@@ -403,7 +403,7 @@ fn main() {
 }
 ```
 
-**Example - Borrow ✅:**
+**Example - Borrow :white_check_mark::**
 ```rust
 enum Light {
     Bright,
@@ -424,7 +424,7 @@ fn main() {
 }
 ```
 
-#### 1.8.6.1. Ownership recap
+### 1.11.1. Ownership recap
 * Memory must be managed in some way to present leaks
 * Rust uses _**ownership**_ to accomplish memory management
     * The _**owner**_ of data must clean up the memory
