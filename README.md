@@ -1,47 +1,42 @@
-# RUST
+# RUST <!-- omit in toc -->
 
-## Index
-- [RUST](#rust)
-  - [Index](#index)
-  - [Fundamentals](#fundamentals)
-    - [Data Types](#data-types)
-    - [Variables](#variables)
-    - [Functions](#functions)
-    - [Println Macro](#println-macro)
-    - [Control flow using `if`](#control-flow-using-if)
-      - [Example `if..else`](#example-ifelse)
-      - [Example Nested `if..else`](#example-nested-ifelse)
-      - [Example `else..if`](#example-elseif)
-    - [Repetition using loops](#repetition-using-loops)
-    - [Match](#match)
-      - [`match` vs `else..if`](#match-vs-elseif)
-      - [Match recap](#match-recap)
-  - [Working With Data](#working-with-data)
-    - [Enumeration `enum`](#enumeration-enum)
-      - [Enums recap](#enums-recap)
-    - [Structure `struct`](#structure-struct)
-      - [Structs recap](#structs-recap)
-    - [Tuples](#tuples)
-      - [Tuples recap](#tuples-recap)
-    - [Expressions](#expressions)
-      - [Expressions recap](#expressions-recap)
-    - [Intermediate Memory](#intermediate-memory)
-      - [Addresses](#addresses)
-      - [Offsets](#offsets)
-      - [Intermediate Memory recap](#intermediate-memory-recap)
-    - [Ownership](#ownership)
-      - [Ownership recap](#ownership-recap)
+## Index: <!-- omit in toc -->
+- [1. Fundamentals](#1-fundamentals)
+  - [1.1. Data Types](#11-data-types)
+  - [1.2. Variables](#12-variables)
+  - [1.3. Functions](#13-functions)
+  - [1.4. Println Macro](#14-println-macro)
+  - [1.5. Control flow using `if`](#15-control-flow-using-if)
+  - [1.6. Repetition using loops](#16-repetition-using-loops)
+  - [1.7. Match](#17-match)
+    - [1.7.1. `match` vs `else..if`](#171-match-vs-elseif)
+    - [1.7.2. Match recap](#172-match-recap)
+  - [1.8. Working With Data](#18-working-with-data)
+    - [1.8.1. Enumeration `enum`](#181-enumeration-enum)
+      - [1.8.1.1. Enums recap](#1811-enums-recap)
+    - [1.8.2. Structure `struct`](#182-structure-struct)
+      - [1.8.2.1. Structs recap](#1821-structs-recap)
+    - [1.8.3. Tuples](#183-tuples)
+      - [1.8.3.1. Tuples recap](#1831-tuples-recap)
+    - [1.8.4. Expressions](#184-expressions)
+      - [1.8.4.1. Expressions recap](#1841-expressions-recap)
+    - [1.8.5. Intermediate Memory](#185-intermediate-memory)
+      - [1.8.5.1. Addresses](#1851-addresses)
+      - [1.8.5.2. Offsets](#1852-offsets)
+      - [1.8.5.3. Intermediate Memory recap](#1853-intermediate-memory-recap)
+    - [1.8.6. Ownership](#186-ownership)
+      - [1.8.6.1. Ownership recap](#1861-ownership-recap)
 
-## Fundamentals
+# 1. Fundamentals
 
-### Data Types
+## 1.1. Data Types
 - Boolean
 - Integer
 - Double & float
 - Character
 - String
 
-### Variables
+## 1.2. Variables
 * Assign data to a temporary memory location
     * Allows Programmer to easily work with memory
 * Immutable by default, but can be mutable
@@ -55,7 +50,7 @@ let quit_program = false;
 let your_half = my_half;
 ```
 
-### Functions
+## 1.3. Functions
 * A way to encapsulate program functionality
 * Optionally accept data
 * Optionally return data
@@ -72,8 +67,8 @@ let y = add(3, 0);
 let z = add(x, 1);
 ```
 
-### Println Macro
-* "Prints" (displays) information to the terminal
+## 1.4. Println Macro
+* _Prints_ (displays) information to the terminal
 * Macros use an exclamation point to call
 * Generate additional Rust code
 * Useful for debugging
@@ -85,7 +80,7 @@ println!("{:?}", life);
 println!("{:?} {:?}", life, life);
 ```
 
-### Control flow using `if`
+## 1.5. Control flow using `if`
 * Code executed line-by-line
 * Actions are performed & control flow may change
     * Specific conditions can change control flow
@@ -93,7 +88,7 @@ println!("{:?} {:?}", life, life);
         * `else`
         * `else if`
 
-#### Example `if..else`
+**Example `if..else`:**
 ```rust
 let a = 99;
 if a > 99 {
@@ -104,8 +99,7 @@ if a > 99 {
 
 ```
 
-#### Example Nested `if..else`
-
+**Example Nested `if..else`:**
 ```rust
 let a = 99;
 if a > 99 {
@@ -119,8 +113,7 @@ if a > 99 {
 }
 ```
 
-#### Example `else..if`
-
+**Example `else..if`:**
 ```rust
 let a = 99;
 if a > 200 {
@@ -132,8 +125,8 @@ if a > 200 {
 }
 ```
 
-### Repetition using loops
-* Called "lopping" or "iteration"
+## 1.6. Repetition using loops
+* Called _"lopping"_ or _"iteration"_
 * Multiple types of loops
     * `loop` - infinite loop
     * `while` - conditional loop
@@ -158,7 +151,7 @@ while a != 5 {
 }
 ```
 
-### Match
+## 1.7. Match
 * Add logic to program
 * Similar to `if..else`
 * Exhaustive
@@ -188,21 +181,21 @@ fn main() {
 }
 ```
 
-#### `match` vs `else..if`
+### 1.7.1. `match` vs `else..if`
 * `match` will be checked by the compiler
     * If a new possibility is added, you will be notified when this occurs
 * `else..if` is <ins>not</ins> checked by the compiler
     * If a new possibility is added, your code may contain a bug
 
-#### Match recap
+### 1.7.2. Match recap
 * Prefer `match` over `else..if` when working with a single variable
 * `match` considers all possibilities
     * More robust code
-* Use underscore (_) to match "anything else"
+* Use underscore (_) to match **anything else**
 
-## Working With Data
+## 1.8. Working With Data
 
-### Enumeration `enum`
+### 1.8.1. Enumeration `enum`
 * Data that can be one of multiple different possibilities
     * Each possibility is called a _**variant**_
 * Provides information about your program to the compiler
@@ -227,12 +220,12 @@ fn which_way(go: Direction) {
 }
 ```
 
-#### Enums recap
+#### 1.8.1.1. Enums recap
 * Enums can only be one variant at a time
 * More robust programs when paired with `match`
 * Make program code easier to read
 
-### Structure `struct`
+### 1.8.2. Structure `struct`
 * A type that contains multiple pieces of data
     * All or nothing - cannot have some pieces of data and not others
 * Each piece of data is called a _**field**_
@@ -258,12 +251,12 @@ fn main() {
 }
 ```
 
-#### Structs recap
+#### 1.8.2.1. Structs recap
 * Structs deal with multiple pieces of data
 * All fields must be present to create a `struct`
 * Fields can be accessed using a dot (.)
 
-### Tuples
+### 1.8.3. Tuples
 * A type of "record"
 * Store data anonymously
     * No need to name fields
@@ -291,13 +284,13 @@ fn main() {
 }
 ```
 
-#### Tuples recap
+#### 1.8.3.1. Tuples recap
 * Allow for anonymous data access
 * Useful when destructuring
 * Can contain any number of fields
     * Use `struct` when more than 2 or 3 fields
 
-### Expressions
+### 1.8.4. Expressions
 * Rust is an expression-based language
     * Most things are evaluated and return some value
 * Expression values coalesce to a single point
@@ -348,48 +341,48 @@ let order_placed = match item {
 };
 ```
 
-#### Expressions recap
+#### 1.8.4.1. Expressions recap
 * Expressions allow nested logic
 * `if` and `match` expressions can be nested
     * Best to not use more than two or three levels
 
-### Intermediate Memory
+### 1.8.5. Intermediate Memory
 **Basic memory refresh:**
 * Memory is stored using binary
-    * Bits: 0 or 1
+    * Bits: _0_ or _1_
 * Computer optimized for bytes
-    * 1 byte == 8 contiguous bits
+    * _1_ byte == _8_ _contiguous bits_
 * Fully contiguous
 
-#### Addresses
-* All data in memory has an "address"
+#### 1.8.5.1. Addresses
+* All data in memory has an _**address**_
     * Used to locate data
     * Always the same - only data changes
 * Usually don't utilize addresses directly
     * Variables handle most of the work
 
-#### Offsets
-* Items can be located at and address using an "offset"
+#### 1.8.5.2. Offsets
+* Items can be located at and address using an _**offset**_
 * Offsets begin at 0
 * Represent the number of bytes away from the original address
     * Normally deal with indexes instead
 
 ![Addresses & Offsets](./images/address&offsets.png)
 
-#### Intermediate Memory recap
+#### 1.8.5.3. Intermediate Memory recap
 * Memory uses addresses & offsets
 * Addresses are permanent, data differs
 * Offsets can be used to "index" into some data
 
-### Ownership
+### 1.8.6. Ownership
 **Managing memory:**
 * Programs must track memory
-    * If they fail to do so, a "leak" occurs
-* Rust utilizes an "ownership" model to manage memory
-    * The "owner" of memory is responsible f9or cleaning up the memory
-* Memory can either be ¨"moved" or "borrowed"
+    * If they fail to do so, a _**leak**_ occurs
+* Rust utilizes an _**ownership**_ model to manage memory
+    * The _**owner**_ of memory is responsible f9or cleaning up the memory
+* Memory can either be _**moved**_ or _**borrowed**_
 
-**Example - Move (❌):**
+**Example - Move ❌:**
 ```rust
 enum Light {
     Bright,
@@ -410,7 +403,7 @@ fn main() {
 }
 ```
 
-**Example - Borrow:**
+**Example - Borrow ✅:**
 ```rust
 enum Light {
     Bright,
@@ -431,10 +424,10 @@ fn main() {
 }
 ```
 
-#### Ownership recap
+#### 1.8.6.1. Ownership recap
 * Memory must be managed in some way to present leaks
-* Rust uses "ownership" to accomplish memory management
+* Rust uses _**ownership**_ to accomplish memory management
     * The "owner" of data must clean up the memory
     * This occurs automatically at the end of the scope
-* Default behavior is to "move" memory to a new owner
-    * Use and ampersand (&) to allow code to "borrow" memory
+* Default behavior is to _**move**_ memory to a new owner
+    * Use and ampersand _**&**_ to allow code to _**borrow**_ memory
