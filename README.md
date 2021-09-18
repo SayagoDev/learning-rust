@@ -16,21 +16,21 @@
     - [Match](#match)
       - [`match` vs `else..if`](#match-vs-elseif)
       - [Match recap](#match-recap)
-    - [Working With Data](#working-with-data)
-      - [Enumeration `enum`](#enumeration-enum)
-        - [Enums recap](#enums-recap)
-      - [Structure `struct`](#structure-struct)
-        - [Structs recap](#structs-recap)
-      - [Tuples](#tuples)
-        - [Tuples recap](#tuples-recap)
-      - [Expressions](#expressions)
-        - [Expressions recap](#expressions-recap)
-      - [Intermediate Memory](#intermediate-memory)
-        - [Addresses](#addresses)
-        - [Offsets](#offsets)
-        - [Basic memory refresh recap](#basic-memory-refresh-recap)
-      - [Ownership](#ownership)
-        - [Ownership recap](#ownership-recap)
+  - [Working With Data](#working-with-data)
+    - [Enumeration `enum`](#enumeration-enum)
+      - [Enums recap](#enums-recap)
+    - [Structure `struct`](#structure-struct)
+      - [Structs recap](#structs-recap)
+    - [Tuples](#tuples)
+      - [Tuples recap](#tuples-recap)
+    - [Expressions](#expressions)
+      - [Expressions recap](#expressions-recap)
+    - [Intermediate Memory](#intermediate-memory)
+      - [Addresses](#addresses)
+      - [Offsets](#offsets)
+      - [Intermediate Memory recap](#intermediate-memory-recap)
+    - [Ownership](#ownership)
+      - [Ownership recap](#ownership-recap)
 
 ## Fundamentals
 
@@ -200,9 +200,9 @@ fn main() {
     * More robust code
 * Use underscore (_) to match "anything else"
 
-### Working With Data
+## Working With Data
 
-#### Enumeration `enum`
+### Enumeration `enum`
 * Data that can be one of multiple different possibilities
     * Each possibility is called a _**variant**_
 * Provides information about your program to the compiler
@@ -227,12 +227,12 @@ fn which_way(go: Direction) {
 }
 ```
 
-##### Enums recap
+#### Enums recap
 * Enums can only be one variant at a time
 * More robust programs when paired with `match`
 * Make program code easier to read
 
-#### Structure `struct`
+### Structure `struct`
 * A type that contains multiple pieces of data
     * All or nothing - cannot have some pieces of data and not others
 * Each piece of data is called a _**field**_
@@ -258,12 +258,12 @@ fn main() {
 }
 ```
 
-##### Structs recap
+#### Structs recap
 * Structs deal with multiple pieces of data
 * All fields must be present to create a `struct`
 * Fields can be accessed using a dot (.)
 
-#### Tuples
+### Tuples
 * A type of "record"
 * Store data anonymously
     * No need to name fields
@@ -291,13 +291,13 @@ fn main() {
 }
 ```
 
-##### Tuples recap
+#### Tuples recap
 * Allow for anonymous data access
 * Useful when destructuring
 * Can contain any number of fields
     * Use `struct` when more than 2 or 3 fields
 
-#### Expressions
+### Expressions
 * Rust is an expression-based language
     * Most things are evaluated and return some value
 * Expression values coalesce to a single point
@@ -348,12 +348,12 @@ let order_placed = match item {
 };
 ```
 
-##### Expressions recap
+#### Expressions recap
 * Expressions allow nested logic
 * `if` and `match` expressions can be nested
     * Best to not use more than two or three levels
 
-#### Intermediate Memory
+### Intermediate Memory
 **Basic memory refresh:**
 * Memory is stored using binary
     * Bits: 0 or 1
@@ -361,14 +361,14 @@ let order_placed = match item {
     * 1 byte == 8 contiguous bits
 * Fully contiguous
 
-##### Addresses
+#### Addresses
 * All data in memory has an "address"
     * Used to locate data
     * Always the same - only data changes
 * Usually don't utilize addresses directly
     * Variables handle most of the work
 
-##### Offsets
+#### Offsets
 * Items can be located at and address using an "offset"
 * Offsets begin at 0
 * Represent the number of bytes away from the original address
@@ -376,18 +376,12 @@ let order_placed = match item {
 
 ![Addresses & Offsets](./images/address&offsets.png)
 
-##### Basic memory refresh recap
+#### Intermediate Memory recap
 * Memory uses addresses & offsets
 * Addresses are permanent, data differs
 * Offsets can be used to "index" into some data
 
-
-
-
-
-
-
-#### Ownership
+### Ownership
 **Managing memory:**
 * Programs must track memory
     * If they fail to do so, a "leak" occurs
@@ -395,7 +389,7 @@ let order_placed = match item {
     * The "owner" of memory is responsible f9or cleaning up the memory
 * Memory can either be ¨"moved" or "borrowed"
 
-**Example - Move (error):**
+**Example - Move (❌):**
 ```rust
 enum Light {
     Bright,
@@ -437,7 +431,7 @@ fn main() {
 }
 ```
 
-##### Ownership recap
+#### Ownership recap
 * Memory must be managed in some way to present leaks
 * Rust uses "ownership" to accomplish memory management
     * The "owner" of data must clean up the memory
