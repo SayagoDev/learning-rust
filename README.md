@@ -26,6 +26,10 @@
     - [1.10.3. Intermediate Memory recap](#1103-intermediate-memory-recap)
   - [1.11. Ownership](#111-ownership)
     - [1.11.1. Ownership recap](#1111-ownership-recap)
+  - [1.12. Data Structures](#112-data-structures)
+    - [1.12.1. Vector](#1121-vector)
+      - [1.12.1.1. Vector recap](#11211-vector-recap)
+      - [1.12.1.2. Vector demo](#11212-vector-demo)
 
 # 1. Fundamentals
 
@@ -431,3 +435,59 @@ fn main() {
     * This occurs automatically at the end of the scope
 * Default behavior is to _**move**_ memory to a new owner
     * Use and ampersand _**&**_ to allow code to _**borrow**_ memory
+
+## 1.12. Data Structures
+
+### 1.12.1. Vector
+* Multiple pieces of data
+    * Must be the same type
+* Used for list of information
+* CAn add, remove, and traverse the entries
+
+_**Example:**_
+```rust
+let my_numbers = vec![1, 2, 3];
+
+let mut my_numbers = Vec::new();
+my_numbers.push(1);
+my_numbers.push(2);
+my_numbers.push(3);
+my_numbers.pop();
+my_numbers.len(); // this is 2
+
+let two = my_numbers[1];
+```
+
+```rust
+let my_numbers = vec![1, 2, 3];
+
+for num in my_numbers {
+    println!("{:?}", num);
+}
+```
+
+#### 1.12.1.1. Vector recap
+* Vectors contain multiple pieces of similar data
+* Data can be added or removed
+* The `vec!` macro can be used to make vectors
+* User `for..in` to iterate through items of vector
+
+#### 1.12.1.2. Vector demo
+```rust
+struct Test {
+    score: i32
+}
+
+fn main() {
+    let my_scores = vec![
+        Test { score: 90 },
+        Test { score: 88 },
+        Test { score: 77 },
+        Test { score: 93 },
+    ];
+
+    for test in my_scores {
+        println!("score = {:?}", test.score);
+    }
+}
+```
