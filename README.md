@@ -1,46 +1,133 @@
 # RUST <!-- omit in toc -->
 
 ## Index: <!-- omit in toc -->
-- [1. Fundamentals](#1-fundamentals)
-  - [1.1. Data Types](#11-data-types)
-  - [1.2. Variables](#12-variables)
-  - [1.3. Functions](#13-functions)
-  - [1.4. Println Macro](#14-println-macro)
-  - [1.5. Control flow using `if`](#15-control-flow-using-if)
-  - [1.6. Repetition using loops](#16-repetition-using-loops)
-  - [1.7. Match](#17-match)
-    - [1.7.1. `match` vs `else..if`](#171-match-vs-elseif)
-    - [1.7.2. Match recap](#172-match-recap)
-  - [1.8. Working With Data](#18-working-with-data)
-    - [1.8.1. Enumeration `enum`](#181-enumeration-enum)
-      - [1.8.1.1. Enums recap](#1811-enums-recap)
-    - [1.8.2. Structure `struct`](#182-structure-struct)
-      - [1.8.2.1. Structs recap](#1821-structs-recap)
-    - [1.8.3. Tuples](#183-tuples)
-      - [1.8.3.1. Tuples recap](#1831-tuples-recap)
-  - [1.9. Expressions](#19-expressions)
-    - [1.9.1. Expressions recap](#191-expressions-recap)
-  - [1.10. Intermediate Memory](#110-intermediate-memory)
-    - [1.10.1. Addresses](#1101-addresses)
-    - [1.10.2. Offsets](#1102-offsets)
-    - [1.10.3. Intermediate Memory recap](#1103-intermediate-memory-recap)
-  - [1.11. Ownership](#111-ownership)
-    - [1.11.1. Ownership recap](#1111-ownership-recap)
-  - [1.12. Data Structures](#112-data-structures)
-    - [1.12.1. Vector](#1121-vector)
-      - [1.12.1.1. Vector recap](#11211-vector-recap)
-      - [1.12.1.2. Vector demo](#11212-vector-demo)
+- [Fundamentals](#fundamentals)
+  - [Data Types](#data-types)
+    - [String and &str](#string-and-str)
+      - [Strings recap](#strings-recap)
+      - [Strings Demo](#strings-demo)
+  - [Variables](#variables)
+  - [Functions](#functions)
+  - [Println Macro](#println-macro)
+  - [Control flow using `if`](#control-flow-using-if)
+  - [Repetition using loops](#repetition-using-loops)
+  - [Match](#match)
+    - [`match` vs `else..if`](#match-vs-elseif)
+    - [Match recap](#match-recap)
+  - [Working With Data](#working-with-data)
+    - [Enumeration `enum`](#enumeration-enum)
+      - [Enums recap](#enums-recap)
+    - [Structure `struct`](#structure-struct)
+      - [Structs recap](#structs-recap)
+    - [Tuples](#tuples)
+      - [Tuples recap](#tuples-recap)
+  - [Expressions](#expressions)
+    - [Expressions recap](#expressions-recap)
+  - [Intermediate Memory](#intermediate-memory)
+    - [Addresses](#addresses)
+    - [Offsets](#offsets)
+    - [Intermediate Memory recap](#intermediate-memory-recap)
+  - [Ownership](#ownership)
+    - [Ownership recap](#ownership-recap)
+  - [Data Structures](#data-structures)
+    - [Vector](#vector)
+      - [Vector recap](#vector-recap)
+      - [Vector demo](#vector-demo)
 
-# 1. Fundamentals
+# Fundamentals
 
-## 1.1. Data Types
+## Data Types
 - Boolean
 - Integer
 - Double & float
 - Character
 - String
 
-## 1.2. Variables
+### String and &str
+* Two commonly used types of strings
+    * `String` - owned
+    * `&str` - borrowed `String` slice
+* Must use and owned `String` to store in a `struct`
+* Use `&str` when passing to a function
+
+_**Example - Pass to function:**_
+```rust
+fn print_it(data: &str) {
+    println!("{:?}", data);
+}
+
+fn main() {
+    print_it("a string slice");
+    let owned_string = "owned string".to_owned();
+    let another_owned = String::from("another");
+    print_it(&owned_string);
+    print_it(&another_owned);
+}
+```
+_**Example - Will not work**_ ❌:
+```rust
+struct Employee {
+    name: &str,
+}
+
+fn main() {
+    let emp_name = "Jayson";
+    let emp = Employee {
+        name: emp_name
+    };
+}
+```
+_**Example - Works!**_ ✅:
+```rust
+struct Employee {
+    name: String,
+}
+
+fn main() {
+    let emp_name = "Jayson".to_owned();
+    let emp_name = String::from("Jayson"); // or
+    let emp = Employee {
+        name: emp_name
+    };
+}
+```
+
+#### Strings recap
+* Strings are automatically borrowed
+* Use `.to_owned()` or `String::from()` to create and owned copy of a string slice
+* Use and owned `String` when storing in a `struct`
+
+#### Strings Demo
+```rust
+struct LineItem {
+    name: String,
+    count: i32,
+}
+
+fn print_name(name: &str) {
+    println!("name: {:?}", name);
+}
+
+fn main() {
+    let receipt = vec![
+        LineItem {
+            name: "cereal".to_owned(),
+            count: 1,
+        },
+        LineItem {
+            name: String::from("fruit"),
+            count: 3,
+        },
+    ];
+
+    for item in receipt {
+        print_name(&item.name);
+        println!("count: {:?}", item.count)
+    }
+}
+```
+
+## Variables
 * Assign data to a temporary memory location
     * Allows Programmer to easily work with memory
 * Immutable by default, but can be mutable
@@ -54,7 +141,7 @@ let quit_program = false;
 let your_half = my_half;
 ```
 
-## 1.3. Functions
+## Functions
 * A way to encapsulate program functionality
 * Optionally accept data
 * Optionally return data
@@ -71,7 +158,7 @@ let y = add(3, 0);
 let z = add(x, 1);
 ```
 
-## 1.4. Println Macro
+## Println Macro
 * _Prints_ (displays) information to the terminal
 * Macros use an exclamation point to call
 * Generate additional Rust code
@@ -84,7 +171,7 @@ println!("{:?}", life);
 println!("{:?} {:?}", life, life);
 ```
 
-## 1.5. Control flow using `if`
+## Control flow using `if`
 * Code executed line-by-line
 * Actions are performed & control flow may change
     * Specific conditions can change control flow
@@ -129,7 +216,7 @@ if a > 200 {
 }
 ```
 
-## 1.6. Repetition using loops
+## Repetition using loops
 * Called _"lopping"_ or _"iteration"_
 * Multiple types of loops
     * `loop` - infinite loop
@@ -155,7 +242,7 @@ while a != 5 {
 }
 ```
 
-## 1.7. Match
+## Match
 * Add logic to program
 * Similar to `if..else`
 * Exhaustive
@@ -185,21 +272,21 @@ fn main() {
 }
 ```
 
-### 1.7.1. `match` vs `else..if`
+### `match` vs `else..if`
 * `match` will be checked by the compiler
     * If a new possibility is added, you will be notified when this occurs
 * `else..if` is <ins>not</ins> checked by the compiler
     * If a new possibility is added, your code may contain a bug
 
-### 1.7.2. Match recap
+### Match recap
 * Prefer `match` over `else..if` when working with a single variable
 * `match` considers all possibilities
     * More robust code
 * Use underscore (_) to match **anything else**
 
-## 1.8. Working With Data
+## Working With Data
 
-### 1.8.1. Enumeration `enum`
+### Enumeration `enum`
 * Data that can be one of multiple different possibilities
     * Each possibility is called a _**variant**_
 * Provides information about your program to the compiler
@@ -224,12 +311,12 @@ fn which_way(go: Direction) {
 }
 ```
 
-#### 1.8.1.1. Enums recap
+#### Enums recap
 * Enums can only be one variant at a time
 * More robust programs when paired with `match`
 * Make program code easier to read
 
-### 1.8.2. Structure `struct`
+### Structure `struct`
 * A type that contains multiple pieces of data
     * All or nothing - cannot have some pieces of data and not others
 * Each piece of data is called a _**field**_
@@ -255,12 +342,12 @@ fn main() {
 }
 ```
 
-#### 1.8.2.1. Structs recap
+#### Structs recap
 * Structs deal with multiple pieces of data
 * All fields must be present to create a `struct`
 * Fields can be accessed using a dot (.)
 
-### 1.8.3. Tuples
+### Tuples
 * A type of "record"
 * Store data anonymously
     * No need to name fields
@@ -288,13 +375,13 @@ fn main() {
 }
 ```
 
-#### 1.8.3.1. Tuples recap
+#### Tuples recap
 * Allow for anonymous data access
 * Useful when destructuring
 * Can contain any number of fields
     * Use `struct` when more than 2 or 3 fields
 
-## 1.9. Expressions
+## Expressions
 * Rust is an expression-based language
     * Most things are evaluated and return some value
 * Expression values coalesce to a single point
@@ -345,12 +432,12 @@ let order_placed = match item {
 };
 ```
 
-### 1.9.1. Expressions recap
+### Expressions recap
 * Expressions allow nested logic
 * `if` and `match` expressions can be nested
     * Best to not use more than two or three levels
 
-## 1.10. Intermediate Memory
+## Intermediate Memory
 **Basic memory refresh:**
 * Memory is stored using binary
     * Bits: _0_ or _1_
@@ -358,14 +445,14 @@ let order_placed = match item {
     * _1_ byte == _8_ _contiguous bits_
 * Fully contiguous
 
-### 1.10.1. Addresses
+### Addresses
 * All data in memory has an _**address**_
     * Used to locate data
     * Always the same - only data changes
 * Usually don't utilize addresses directly
     * Variables handle most of the work
 
-### 1.10.2. Offsets
+### Offsets
 * Items can be located at and address using an _**offset**_
 * Offsets begin at 0
 * Represent the number of bytes away from the original address
@@ -373,12 +460,12 @@ let order_placed = match item {
 
 ![Addresses & Offsets](./images/address&offsets.png)
 
-### 1.10.3. Intermediate Memory recap
+### Intermediate Memory recap
 * Memory uses addresses & offsets
 * Addresses are permanent, data differs
 * Offsets can be used to _**index**_ into some data
 
-## 1.11. Ownership
+## Ownership
 **Managing memory:**
 * Programs must track memory
     * If they fail to do so, a _**leak**_ occurs
@@ -428,7 +515,7 @@ fn main() {
 }
 ```
 
-### 1.11.1. Ownership recap
+### Ownership recap
 * Memory must be managed in some way to present leaks
 * Rust uses _**ownership**_ to accomplish memory management
     * The _**owner**_ of data must clean up the memory
@@ -436,9 +523,9 @@ fn main() {
 * Default behavior is to _**move**_ memory to a new owner
     * Use and ampersand _**&**_ to allow code to _**borrow**_ memory
 
-## 1.12. Data Structures
+## Data Structures
 
-### 1.12.1. Vector
+### Vector
 * Multiple pieces of data
     * Must be the same type
 * Used for list of information
@@ -466,13 +553,13 @@ for num in my_numbers {
 }
 ```
 
-#### 1.12.1.1. Vector recap
+#### Vector recap
 * Vectors contain multiple pieces of similar data
 * Data can be added or removed
 * The `vec!` macro can be used to make vectors
 * User `for..in` to iterate through items of vector
 
-#### 1.12.1.2. Vector demo
+#### Vector demo
 ```rust
 struct Test {
     score: i32
