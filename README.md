@@ -24,6 +24,8 @@
       - [Structs recap](#structs-recap)
     - [Tuples](#tuples)
       - [Tuples recap](#tuples-recap)
+    - [`Option`](#option)
+      - [`Option` recap](#option-recap)
   - [Expressions](#expressions)
     - [Expressions recap](#expressions-recap)
   - [Intermediate Memory](#intermediate-memory)
@@ -458,6 +460,71 @@ fn main() {
 * Useful when destructuring
 * Can contain any number of fields
     * Use `struct` when more than 2 or 3 fields
+
+### `Option`
+* A type that may be one of two things
+    * Some data of a specified type
+    * Nothing
+* Used in scenarios where data may not be required or is unavailable
+    * Unable to find something
+    * Ran out of items in a list
+    * Form fields not filled out
+
+**Definition:**
+```rust
+enum Option<T> {
+    Some(T),
+    None
+}
+```
+
+**Example:**
+```rust
+struct Customer {
+    age: Option<i32>,
+    email: String,
+}
+
+let mark = Customer {
+    age: Some(22), email: "mark@example.com".to_owned(),
+};
+let becky = Customer {
+    age: None, email: "becky@example.com".to_owned(),
+};
+match becky.age {
+    Some(age) => println!("customer is {:?} years old", age),
+    None => println!("customer age not provided"),
+}
+```
+```rust
+struct GroceryItem {
+    name: String,
+    qty: i32,
+}
+
+fn find_quantity(name: &str) -> Option<i32> {
+    let groceries = vec![
+        GroceryItem { name: "bananas".to_owned(), qty: 4, },
+        GroceryItem { name: "eggs".to_owned(), qty: 12, },
+        GroceryItem { name: "bread".to_owned(), qty: 1, },
+    ];
+    for item in groceries {
+        if item.name == name {
+            return Some(item.qty);
+        }
+    }
+    None
+}
+```
+
+#### `Option` recap
+* `Option` represents either some data or nothing
+    * `Some(variable_name)`
+        * Data is available
+    * `None`
+        * No data is available
+* Useful when needing to work with optional data
+* use `Option<type>` to declare an optional type
 
 ## Expressions
 * Rust is an expression-based language
