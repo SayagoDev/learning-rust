@@ -33,6 +33,8 @@
     - [Vector](#vector)
       - [Vector recap](#vector-recap)
       - [Vector demo](#vector-demo)
+  - [Type Annotations](#type-annotations)
+    - [Type Annotations recap](#type-annotations-recap)
 
 # Fundamentals
 
@@ -578,3 +580,40 @@ fn main() {
     }
 }
 ```
+
+## Type Annotations
+* Required for function signatures
+* Types are usually inferred
+* Can also be specified in code
+    * Explicit type annotations
+
+_**Example - Basic:**_
+```rust
+fn print_many(msg: &str, count: i32) { }
+
+enum Mouse {
+    LeftClick,
+    RightClick,
+    MiddleClick,
+}
+
+let num: i32 = 15;
+let a: char = 'a';
+let left_click: Mouse = Mouse::LeftClick;
+```
+
+_**Example - Generics:**_
+```rust
+let numbers: Vec<i32> = vec![1, 2, 3];
+let letters: Vec<char> = vec!['a', 'b'];
+let clicks: Vec<Mouse> = vec![
+    Mouse::LeftClick,
+    Mouse::RightClick,
+    Mouse::MiddleClick,
+];
+```
+
+### Type Annotations recap
+* Type annotations are mostly optional within function bodies
+    * Occasionally required if compiler cannot infer the type
+* Can be specified when using `let` bindings
