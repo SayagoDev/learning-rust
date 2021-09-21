@@ -12,11 +12,14 @@
   - [Control flow using `if`](#control-flow-using-if)
   - [Repetition using loops](#repetition-using-loops)
   - [Match](#match)
+    - [Advanced `match` Demo](#advanced-match-demo)
     - [`match` vs `else..if`](#match-vs-elseif)
     - [Match recap](#match-recap)
   - [Working With Data](#working-with-data)
     - [Enumeration `enum`](#enumeration-enum)
       - [Enums recap](#enums-recap)
+    - [`enum` revisited](#enum-revisited)
+      - [`enum` revisited recap](#enum-revisited-recap)
     - [Structure `struct`](#structure-struct)
       - [Structs recap](#structs-recap)
     - [Tuples](#tuples)
@@ -274,6 +277,43 @@ fn main() {
 }
 ```
 
+### Advanced `match` Demo
+```rust
+enum Discount {
+    Percent(i32),
+    Flat(i32),
+}
+
+struct Ticket {
+    event: String,
+    price: i32,
+}
+
+fn main() {
+    let n = 3;
+    match n {
+        3 => println!("three"),
+        other => println!(¨"number: {:?}", other),
+    }
+
+    let flat = Discount::Flat(2);
+    match flat {
+        Discount::Flat(2) => println!("flat 2"),
+        Discount::Flat(amount) => println!("flat discount of {:?}", amount),
+        _ => (),
+    }
+
+    let concert = Ticket {
+        event: "concert".to_owned(),
+        price: 50,
+    };
+    match concert {
+        Ticket { price: 50, event } => println!("event @ 50 = {:?}", event),
+        Ticket { price, .. } => println!("price = {:?}", price), // Two dots just means, any other fields get ignored
+    }
+}
+```
+
 ### `match` vs `else..if`
 * `match` will be checked by the compiler
     * If a new possibility is added, you will be notified when this occurs
@@ -317,6 +357,42 @@ fn which_way(go: Direction) {
 * Enums can only be one variant at a time
 * More robust programs when paired with `match`
 * Make program code easier to read
+
+### `enum` revisited
+* `enum` is a type that can represent one item at a time
+    * Each item is called a variant
+* `enum` is not limited to just plain variants
+    * Each variant can optionally contain additional data
+
+**Example:**
+```rust
+enum Mouse {
+    LeftClick,
+    RightClick,
+    MiddleClick,
+    Scroll(i32),
+    Move(i32, i32),
+}
+```
+```rust
+enum PromoDiscount {
+    NewUser,
+    Holiday(String),
+}
+
+enum Discount {
+    Percent(f64),
+    Flat(i32),
+    Promo(PromoDiscount),
+    Custom(String),
+}
+```
+
+#### `enum` revisited recap
+* `enum` variants can optionally contain data
+    * The data can be another `enum`
+* Can mix plain identifiers and data-containing variants within the same `enum`
+* More than one piece of data can be associated with a variant
 
 ### Structure `struct`
 * A type that contains multiple pieces of data
@@ -533,7 +609,7 @@ fn main() {
 * Used for list of information
 * CAn add, remove, and traverse the entries
 
-_**Example:**_
+**Example:**
 ```rust
 let my_numbers = vec![1, 2, 3];
 
@@ -587,7 +663,7 @@ fn main() {
 * Can also be specified in code
     * Explicit type annotations
 
-_**Example - Basic:**_
+**Example - Basic:**
 ```rust
 fn print_many(msg: &str, count: i32) { }
 
@@ -602,7 +678,7 @@ let a: char = 'a';
 let left_click: Mouse = Mouse::LeftClick;
 ```
 
-_**Example - Generics:**_
+**Example - Generics:**
 ```rust
 let numbers: Vec<i32> = vec![1, 2, 3];
 let letters: Vec<char> = vec!['a', 'b'];
