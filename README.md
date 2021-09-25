@@ -26,6 +26,9 @@
       - [Tuples recap](#tuples-recap)
     - [`Option`](#option)
       - [`Option` recap](#option-recap)
+    - [`Result`](#result)
+      - [`Result` recap](#result-recap)
+      - [`Result` Demo](#result-demo)
       - [`Option` Demo](#option-demo)
   - [Expressions](#expressions)
     - [Expressions recap](#expressions-recap)
@@ -526,6 +529,82 @@ fn find_quantity(name: &str) -> Option<i32> {
         * No data is available
 * Useful when needing to work with optional data
 * use `Option<type>` to declare an optional type
+
+### `Result`
+* A data type that contains one of two types of data:
+    * _**Successful**_ data
+    * _**Error**_ data
+* Used in scenarios where an action needs to be taken, but has the possibility of failure
+    * Copying a file
+    * Connecting to a website
+
+**Definition:**
+```rust
+enum Result<T, E> {
+    Ok(T),
+    Err(E)
+}
+```
+
+**Example:**
+```rust
+fn get_sound(name: &str) -> Result<SoundData, String> {
+    if name == "alert" {
+        Ok(SoundData::new("alert")),
+    } else {
+        Err("unable to find sound data".to_owned())
+    }
+}
+
+let sound = get_sound("alert");
+match sound {
+    Ok(_) => println!("sound data located"),
+    Err(e) => println!("error: {:?}", e),
+}
+```
+
+#### `Result` recap
+* `Result` represents either success or failure
+    * `Ok(variable_name)`
+        * The operation was completed
+    * `Err(variable_name)`
+        * The operation failed
+* Useful when working with functionality that can potentially fail
+* Use `Result<T,E>` when working with results
+
+#### `Result` Demo
+```rust
+#[derive(Debug)]
+enum MenuChoice {
+    MainMenu,
+    Start,
+    Quit,
+}
+
+fn get_choice(input: &str) -> Result<MenuChoice, String> {
+    match input {
+        "mainmenu" => Ok(MenuChoice::MainMenu),
+        "start" => Ok(MenuChoice::start),
+        "quit" => Ok(MenuChoice::Quit),
+        _ => Err("menu choice not found".to_owned()),
+    }
+}
+
+fn print_choice(choice: &MenuChoice) {
+    println!("choice = {:?}", choice);
+}
+
+fn pick_choice(input: &str) -> Result<(), String> {
+    let choice: MenuChoice = get_choice(input)?;
+    print_choice(&choice);
+    Ok(())
+}
+
+fn main() {
+    let choice = pick_choice("end");
+    println!("choice value = {:?}", choice);
+}
+```
 
 #### `Option` Demo
 ```rust
