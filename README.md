@@ -4,46 +4,47 @@
 - [Fundamentals](#fundamentals)
   - [Data Types](#data-types)
     - [String and &str](#string-and-str)
-      - [Strings recap](#strings-recap)
+      - [Strings Recap](#strings-recap)
       - [Strings Demo](#strings-demo)
   - [Variables](#variables)
   - [Functions](#functions)
   - [Println Macro](#println-macro)
   - [Control flow using `if`](#control-flow-using-if)
-  - [Repetition using loops](#repetition-using-loops)
+  - [Repetition Using Loops](#repetition-using-loops)
   - [Match](#match)
     - [Advanced `match` Demo](#advanced-match-demo)
     - [`match` vs `else..if`](#match-vs-elseif)
-    - [Match recap](#match-recap)
+    - [Match Recap](#match-recap)
   - [Working With Data](#working-with-data)
     - [Enumeration `enum`](#enumeration-enum)
-      - [Enums recap](#enums-recap)
-    - [`enum` revisited](#enum-revisited)
-      - [`enum` revisited recap](#enum-revisited-recap)
+      - [Enums Recap](#enums-recap)
+    - [Enumeration Revisited](#enumeration-revisited)
+      - [Enumeration Revisited Recap](#enumeration-revisited-recap)
+      - [Enumeration Revisited Demo](#enumeration-revisited-demo)
     - [Structure `struct`](#structure-struct)
-      - [Structs recap](#structs-recap)
+      - [Structs Recap](#structs-recap)
     - [Tuples](#tuples)
-      - [Tuples recap](#tuples-recap)
+      - [Tuples Recap](#tuples-recap)
     - [`Option`](#option)
-      - [`Option` recap](#option-recap)
-    - [`Result`](#result)
-      - [`Result` recap](#result-recap)
-      - [`Result` Demo](#result-demo)
+      - [`Option` Recap](#option-recap)
       - [`Option` Demo](#option-demo)
+    - [`Result`](#result)
+      - [`Result` Recap](#result-recap)
+      - [`Result` Demo](#result-demo)
   - [Expressions](#expressions)
-    - [Expressions recap](#expressions-recap)
+    - [Expressions Recap](#expressions-recap)
   - [Intermediate Memory](#intermediate-memory)
     - [Addresses](#addresses)
     - [Offsets](#offsets)
-    - [Intermediate Memory recap](#intermediate-memory-recap)
+    - [Intermediate Memory Recap](#intermediate-memory-recap)
   - [Ownership](#ownership)
-    - [Ownership recap](#ownership-recap)
+    - [Ownership Recap](#ownership-recap)
   - [Data Structures](#data-structures)
     - [Vector](#vector)
-      - [Vector recap](#vector-recap)
-      - [Vector demo](#vector-demo)
+      - [Vector Recap](#vector-recap)
+      - [Vector Demo](#vector-demo)
   - [Type Annotations](#type-annotations)
-    - [Type Annotations recap](#type-annotations-recap)
+    - [Type Annotations Recap](#type-annotations-recap)
 
 # Fundamentals
 
@@ -61,7 +62,7 @@
 * Must use and owned `String` to store in a `struct`
 * Use `&str` when passing to a function
 
-_**Example - Pass to function:**_
+**Example - Pass to function:**
 ```rust
 fn print_it(data: &str) {
     println!("{:?}", data);
@@ -75,7 +76,7 @@ fn main() {
     print_it(&another_owned);
 }
 ```
-_**Example - Will not work**_ ❌:
+**Example - Will not work** ❌:
 ```rust
 struct Employee {
     name: &str,
@@ -88,7 +89,7 @@ fn main() {
     };
 }
 ```
-_**Example - Works!**_ ✅:
+**Example - Works!** ✅:
 ```rust
 struct Employee {
     name: String,
@@ -103,7 +104,7 @@ fn main() {
 }
 ```
 
-#### Strings recap
+#### Strings Recap
 * Strings are automatically borrowed
 * Use `.to_owned()` or `String::from()` to create and owned copy of a string slice
 * Use and owned `String` when storing in a `struct`
@@ -227,8 +228,8 @@ if a > 200 {
 }
 ```
 
-## Repetition using loops
-* Called _"lopping"_ or _"iteration"_
+## Repetition Using Loops
+* Called _**lopping**_ or _**iteration**_
 * Multiple types of loops
     * `loop` - infinite loop
     * `while` - conditional loop
@@ -299,7 +300,7 @@ fn main() {
     let n = 3;
     match n {
         3 => println!("three"),
-        other => println!(¨"number: {:?}", other),
+        other => println!("number: {:?}", other),
     }
 
     let flat = Discount::Flat(2);
@@ -326,7 +327,7 @@ fn main() {
 * `else..if` is <ins>not</ins> checked by the compiler
     * If a new possibility is added, your code may contain a bug
 
-### Match recap
+### Match Recap
 * Prefer `match` over `else..if` when working with a single variable
 * `match` considers all possibilities
     * More robust code
@@ -359,12 +360,12 @@ fn which_way(go: Direction) {
 }
 ```
 
-#### Enums recap
+#### Enums Recap
 * Enums can only be one variant at a time
 * More robust programs when paired with `match`
 * Make program code easier to read
 
-### `enum` revisited
+### Enumeration Revisited
 * `enum` is a type that can represent one item at a time
     * Each item is called a variant
 * `enum` is not limited to just plain variants
@@ -394,11 +395,73 @@ enum Discount {
 }
 ```
 
-#### `enum` revisited recap
+#### Enumeration Revisited Recap
 * `enum` variants can optionally contain data
     * The data can be another `enum`
 * Can mix plain identifiers and data-containing variants within the same `enum`
 * More than one piece of data can be associated with a variant
+
+#### Enumeration Revisited Demo
+```rust
+enum Message {
+    ChangeColor((u8, u8, u8)),
+    Echo(String),
+    Move(Point),
+    Quit,
+}
+
+struct Point {
+    x: u8,
+    y: u8,
+}
+
+struct State {
+    color: (u8, u8, u8),
+    position: Point,
+    quit: bool,
+}
+
+impl State {
+    fn change_color(&mut self, color: (u8, u8, u8)) {
+        self.color = color;
+    }
+
+    fn quit(&mut self) {
+        self.quit = true;
+    }
+
+    fn echo(&self, s: String) {
+        println!("{}", s);
+    }
+
+    fn move_position(&mut self, p: Point) {
+        self.position = p;
+    }
+
+    fn process(&mut self, message: Message) {
+        match message {
+            Message::ChangeColor(rgb) => self.change_color(rgb),
+            Message::Echo(msg) => self.echo(msg),
+            Message::Move(coordinate) => self.move_position(coordinate),
+            Message::Quit => self.quit(),
+            _ => (),
+        }
+    }
+}
+
+fn main() {
+    let mut state = State {
+        quit: false,
+        position: Point { x: 0, y: 0},
+        color: (0, 0, 0),
+    }
+
+    state.process(Message::ChangeColor((255, 0, 255)));
+    state.process(Message::Echo(String::from("hello world")));
+    state.process(Message::Move(Point { x: 10, y: 15 }));
+    state.process(Message::Quit);
+}
+```
 
 ### Structure `struct`
 * A type that contains multiple pieces of data
@@ -426,7 +489,7 @@ fn main() {
 }
 ```
 
-#### Structs recap
+#### Structs Recap
 * Structs deal with multiple pieces of data
 * All fields must be present to create a `struct`
 * Fields can be accessed using a dot (.)
@@ -459,7 +522,7 @@ fn main() {
 }
 ```
 
-#### Tuples recap
+#### Tuples Recap
 * Allow for anonymous data access
 * Useful when destructuring
 * Can contain any number of fields
@@ -521,7 +584,7 @@ fn find_quantity(name: &str) -> Option<i32> {
 }
 ```
 
-#### `Option` recap
+#### `Option` Recap
 * `Option` represents either some data or nothing
     * `Some(variable_name)`
         * Data is available
@@ -529,6 +592,36 @@ fn find_quantity(name: &str) -> Option<i32> {
         * No data is available
 * Useful when needing to work with optional data
 * use `Option<type>` to declare an optional type
+
+#### `Option` Demo
+```rust
+struct Survey {
+    q1: Option<i32>,
+    q2: Option<bool>,
+    q3: Option<String>,
+}
+
+fn main() {
+    let response = Survey {
+        q1: None,
+        q2: Some(true),
+        q3: Some("A".to_owned()),
+    };
+
+    match response.q1 {
+        Some(ans) => println!("q1: {:?}", ans),
+        None => println!("q1: no response"),
+    }
+    match response.q2 {
+        Some(ans) => println!("q2: {:?}", ans),
+        None => println!("q2: no response"),
+    }
+    match response.q3 {
+        Some(ans) => println!("q3: {:?}", ans),
+        None => println!("q3: no response"),
+    }
+}
+```
 
 ### `Result`
 * A data type that contains one of two types of data:
@@ -563,7 +656,7 @@ match sound {
 }
 ```
 
-#### `Result` recap
+#### `Result` Recap
 * `Result` represents either success or failure
     * `Ok(variable_name)`
         * The operation was completed
@@ -603,36 +696,6 @@ fn pick_choice(input: &str) -> Result<(), String> {
 fn main() {
     let choice = pick_choice("end");
     println!("choice value = {:?}", choice);
-}
-```
-
-#### `Option` Demo
-```rust
-struct Survey {
-    q1: Option<i32>,
-    q2: Option<bool>,
-    q3: Option<String>,
-}
-
-fn main() {
-    let response = Survey {
-        q1: None,
-        q2: Some(true),
-        q3: Some("A".to_owned()),
-    };
-
-    match response.q1 {
-        Some(ans) => println!("q1: {:?}", ans),
-        None => println!("q1: no response"),
-    }
-    match response.q2 {
-        Some(ans) => println!("q2: {:?}", ans),
-        None => println!("q2: no response"),
-    }
-    match response.q3 {
-        Some(ans) => println!("q3: {:?}", ans),
-        None => println!("q3: no response"),
-    }
 }
 ```
 
@@ -687,7 +750,7 @@ let order_placed = match item {
 };
 ```
 
-### Expressions recap
+### Expressions Recap
 * Expressions allow nested logic
 * `if` and `match` expressions can be nested
     * Best to not use more than two or three levels
@@ -715,7 +778,7 @@ let order_placed = match item {
 
 ![Addresses & Offsets](./images/address&offsets.png)
 
-### Intermediate Memory recap
+### Intermediate Memory Recap
 * Memory uses addresses & offsets
 * Addresses are permanent, data differs
 * Offsets can be used to _**index**_ into some data
@@ -770,7 +833,7 @@ fn main() {
 }
 ```
 
-### Ownership recap
+### Ownership Recap
 * Memory must be managed in some way to present leaks
 * Rust uses _**ownership**_ to accomplish memory management
     * The _**owner**_ of data must clean up the memory
@@ -808,13 +871,13 @@ for num in my_numbers {
 }
 ```
 
-#### Vector recap
+#### Vector Recap
 * Vectors contain multiple pieces of similar data
 * Data can be added or removed
 * The `vec!` macro can be used to make vectors
 * User `for..in` to iterate through items of vector
 
-#### Vector demo
+#### Vector Demo
 ```rust
 struct Test {
     score: i32
@@ -866,7 +929,7 @@ let clicks: Vec<Mouse> = vec![
 ];
 ```
 
-### Type Annotations recap
+### Type Annotations Recap
 * Type annotations are mostly optional within function bodies
     * Occasionally required if compiler cannot infer the type
 * Can be specified when using `let` bindings
