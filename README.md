@@ -1,6 +1,6 @@
 # RUST <!-- omit in toc -->
 
-## Index: <!-- omit in toc -->
+## Table of Contents: <!-- omit in toc -->
 - [Fundamentals](#fundamentals)
   - [Data Types](#data-types)
     - [String and &str](#string-and-str)
