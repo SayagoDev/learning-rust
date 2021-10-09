@@ -43,6 +43,9 @@
     - [Vector](#vector)
       - [Vector Recap](#vector-recap)
       - [Vector Demo](#vector-demo)
+    - [Hashmap](#hashmap)
+      - [Hashmap Recap](#hashmap-recap)
+      - [Hashmap Demo](#hashmap-demo)
   - [Type Annotations](#type-annotations)
     - [Type Annotations Recap](#type-annotations-recap)
 
@@ -893,6 +896,70 @@ fn main() {
 
     for test in my_scores {
         println!("score = {:?}", test.score);
+    }
+}
+```
+
+### Hashmap
+* Collection that stores data as key-value pairs
+    * Data is located using the **key**
+    * The data is the **value**
+* Similar to definitions in a dictionary
+* Very fast to retrieve data using the key
+
+**Example: find data**
+```rust
+let mut people = HashMap::new();
+people.insert("Susan", 21);
+people.insert("Ed", 13);
+people.insert("Will", 14);
+people.insert("Cathy", 22);
+people.remove("Susan");
+
+match people.get("Ed") {
+    Some(age) => println!("age = {:?}", age),
+    None => println!("not found"),
+}
+```
+
+**Example: iterate**
+```rust
+for (person, age) in people.iter() {
+    println!("person = {:?}, age = {:?}¨", person, age);
+}
+
+for person in people.keys() {
+    println!("person = {:?}", person);
+}
+
+for age in people.values() {
+    println!("age = {:?}", age);
+}
+```
+
+#### Hashmap Recap
+* Store information as key-value pairs
+    * **key** is used to access the **value**
+* Very fast to insert & find data using they key
+* Useful when you need to find information and know exactly where it is (via the key)
+
+#### Hashmap Demo
+```rust
+use std::collection::HashMap;
+
+#[derive(Debug)]
+struct Contents {
+    content: String,
+}
+
+fn main() {
+    let mut lockers = HashMap::new();
+    lockers.insert(1, Contents {content: "stuff".to_owned()});
+    lockers.insert(2, Contents {content: "shirt".to_owned()});
+    lockers.insert(3, Contents {content: "gym shorts".to_owned()});
+
+    for (locker_number, content) in lockers.iter() {
+        println!("number: {:?}, content: {:?}", locker_number, content);
     }
 }
 ```
