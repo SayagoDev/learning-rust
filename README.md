@@ -1,6 +1,7 @@
 # RUST <!-- omit in toc -->
 
 ## Table of Contents: <!-- omit in toc -->
+
 - [Fundamentals](#fundamentals)
   - [Data Types](#data-types)
     - [String and &str](#string-and-str)
@@ -52,6 +53,7 @@
 # Fundamentals
 
 ## Data Types
+
 - Boolean
 - Integer
 - Double & float
@@ -59,13 +61,15 @@
 - String
 
 ### String and &str
-* Two commonly used types of strings
-    * `String` - owned
-    * `&str` - borrowed `String` slice
-* Must use and owned `String` to store in a `struct`
-* Use `&str` when passing to a function
+
+- Two commonly used types of strings
+  - `String` - owned
+  - `&str` - borrowed `String` slice
+- Must use and owned `String` to store in a `struct`
+- Use `&str` when passing to a function
 
 **Example - Pass to function:**
+
 ```rust
 fn print_it(data: &str) {
     println!("{:?}", data);
@@ -79,7 +83,9 @@ fn main() {
     print_it(&another_owned);
 }
 ```
+
 **Example - Will not work** ❌:
+
 ```rust
 struct Employee {
     name: &str,
@@ -92,7 +98,9 @@ fn main() {
     };
 }
 ```
+
 **Example - Works!** ✅:
+
 ```rust
 struct Employee {
     name: String,
@@ -108,11 +116,13 @@ fn main() {
 ```
 
 #### Strings Recap
-* Strings are automatically borrowed
-* Use `.to_owned()` or `String::from()` to create and owned copy of a string slice
-* Use and owned `String` when storing in a `struct`
+
+- Strings are automatically borrowed
+- Use `.to_owned()` or `String::from()` to create and owned copy of a string slice
+- Use and owned `String` when storing in a `struct`
 
 #### Strings Demo
+
 ```rust
 struct LineItem {
     name: String,
@@ -143,9 +153,10 @@ fn main() {
 ```
 
 ## Variables
-* Assign data to a temporary memory location
-    * Allows Programmer to easily work with memory
-* Immutable by default, but can be mutable
+
+- Assign data to a temporary memory location
+  - Allows Programmer to easily work with memory
+- Immutable by default, but can be mutable
 
 ```rust
 let j = 'j';
@@ -157,11 +168,12 @@ let your_half = my_half;
 ```
 
 ## Functions
-* A way to encapsulate program functionality
-* Optionally accept data
-* Optionally return data
-* Utilized for code organization
-    * Also makes code easier to read
+
+- A way to encapsulate program functionality
+- Optionally accept data
+- Optionally return data
+- Utilized for code organization
+  - Also makes code easier to read
 
 ```rust
 fn add(a: i32, b: i32) -> i32 {
@@ -174,10 +186,11 @@ let z = add(x, 1);
 ```
 
 ## Println Macro
-* _Prints_ (displays) information to the terminal
-* Macros use an exclamation point to call
-* Generate additional Rust code
-* Useful for debugging
+
+- _Prints_ (displays) information to the terminal
+- Macros use an exclamation point to call
+- Generate additional Rust code
+- Useful for debugging
 
 ```rust
 let life = 42;
@@ -187,14 +200,16 @@ println!("{:?} {:?}", life, life);
 ```
 
 ## Control flow using `if`
-* Code executed line-by-line
-* Actions are performed & control flow may change
-    * Specific conditions can change control flow
-        * `if`
-        * `else`
-        * `else if`
+
+- Code executed line-by-line
+- Actions are performed & control flow may change
+  - Specific conditions can change control flow
+    - `if`
+    - `else`
+    - `else if`
 
 **Example `if..else`:**
+
 ```rust
 let a = 99;
 if a > 99 {
@@ -206,6 +221,7 @@ if a > 99 {
 ```
 
 **Example Nested `if..else`:**
+
 ```rust
 let a = 99;
 if a > 99 {
@@ -232,12 +248,14 @@ if a > 200 {
 ```
 
 ## Repetition Using Loops
-* Called _**lopping**_ or _**iteration**_
-* Multiple types of loops
-    * `loop` - infinite loop
-    * `while` - conditional loop
+
+- Called _**lopping**_ or _**iteration**_
+- Multiple types of loops
+  - `loop` - infinite loop
+  - `while` - conditional loop
 
 **Loop**:
+
 ```rust
 let mut a = 0;
 loop {
@@ -248,7 +266,9 @@ loop {
     a = a + 1;
 }
 ```
+
 **While loop:**
+
 ```rust
 let mut a = 0;
 while a != 5 {
@@ -258,12 +278,14 @@ while a != 5 {
 ```
 
 ## Match
-* Add logic to program
-* Similar to `if..else`
-* Exhaustive
-  * All options must be accounted for
+
+- Add logic to program
+- Similar to `if..else`
+- Exhaustive
+  - All options must be accounted for
 
 **Example with boolean:**
+
 ```rust
 fn main() {
     let some_bool = true;
@@ -275,6 +297,7 @@ fn main() {
 ```
 
 **Example with int:**
+
 ```rust
 fn main() {
     let some_int = 3;
@@ -288,6 +311,7 @@ fn main() {
 ```
 
 ### Advanced `match` Demo
+
 ```rust
 enum Discount {
     Percent(i32),
@@ -325,26 +349,30 @@ fn main() {
 ```
 
 ### `match` vs `else..if`
-* `match` will be checked by the compiler
-    * If a new possibility is added, you will be notified when this occurs
-* `else..if` is <ins>not</ins> checked by the compiler
-    * If a new possibility is added, your code may contain a bug
+
+- `match` will be checked by the compiler
+  - If a new possibility is added, you will be notified when this occurs
+- `else..if` is <ins>not</ins> checked by the compiler
+  - If a new possibility is added, your code may contain a bug
 
 ### Match Recap
-* Prefer `match` over `else..if` when working with a single variable
-* `match` considers all possibilities
-    * More robust code
-* Use underscore (_) to match **anything else**
+
+- Prefer `match` over `else..if` when working with a single variable
+- `match` considers all possibilities
+  - More robust code
+- Use underscore (_) to match **anything else**
 
 ## Working With Data
 
 ### Enumeration `enum`
-* Data that can be one of multiple different possibilities
-    * Each possibility is called a _**variant**_
-* Provides information about your program to the compiler
-    * More robust programs
+
+- Data that can be one of multiple different possibilities
+  - Each possibility is called a _**variant**_
+- Provides information about your program to the compiler
+  - More robust programs
 
 **Example:**
+
 ```rust
 enum Direction {
     Up,
@@ -364,17 +392,20 @@ fn which_way(go: Direction) {
 ```
 
 #### Enums Recap
-* Enums can only be one variant at a time
-* More robust programs when paired with `match`
-* Make program code easier to read
+
+- Enums can only be one variant at a time
+- More robust programs when paired with `match`
+- Make program code easier to read
 
 ### Enumeration Revisited
-* `enum` is a type that can represent one item at a time
-    * Each item is called a variant
-* `enum` is not limited to just plain variants
-    * Each variant can optionally contain additional data
+
+- `enum` is a type that can represent one item at a time
+  - Each item is called a variant
+- `enum` is not limited to just plain variants
+  - Each variant can optionally contain additional data
 
 **Example:**
+
 ```rust
 enum Mouse {
     LeftClick,
@@ -384,6 +415,7 @@ enum Mouse {
     Move(i32, i32),
 }
 ```
+
 ```rust
 enum PromoDiscount {
     NewUser,
@@ -399,12 +431,14 @@ enum Discount {
 ```
 
 #### Enumeration Revisited Recap
-* `enum` variants can optionally contain data
-    * The data can be another `enum`
-* Can mix plain identifiers and data-containing variants within the same `enum`
-* More than one piece of data can be associated with a variant
+
+- `enum` variants can optionally contain data
+  - The data can be another `enum`
+- Can mix plain identifiers and data-containing variants within the same `enum`
+- More than one piece of data can be associated with a variant
 
 #### Enumeration Revisited Demo
+
 ```rust
 enum Message {
     ChangeColor((u8, u8, u8)),
@@ -467,11 +501,12 @@ fn main() {
 ```
 
 ### Structure `struct`
-* A type that contains multiple pieces of data
-    * All or nothing - cannot have some pieces of data and not others
-* Each piece of data is called a _**field**_
-* Makes working with data easier
-    * Similar data can be grouped together
+
+- A type that contains multiple pieces of data
+  - All or nothing - cannot have some pieces of data and not others
+- Each piece of data is called a _**field**_
+- Makes working with data easier
+  - Similar data can be grouped together
 
 **Example:**
 ```rust
@@ -493,18 +528,21 @@ fn main() {
 ```
 
 #### Structs Recap
-* Structs deal with multiple pieces of data
-* All fields must be present to create a `struct`
-* Fields can be accessed using a dot (.)
+
+- Structs deal with multiple pieces of data
+- All fields must be present to create a `struct`
+- Fields can be accessed using a dot (.)
 
 ### Tuples
-* A type of "record"
-* Store data anonymously
-    * No need to name fields
-* Useful to return paris of data from functions
-* Can be "destructured" easily into variables
+
+- A type of "record"
+- Store data anonymously
+  - No need to name fields
+- Useful to return paris of data from functions
+- Can be "destructured" easily into variables
 
 **Example:**
+
 ```rust
 enum Access {
     Full,
@@ -526,21 +564,24 @@ fn main() {
 ```
 
 #### Tuples Recap
-* Allow for anonymous data access
-* Useful when destructuring
-* Can contain any number of fields
-    * Use `struct` when more than 2 or 3 fields
+
+- Allow for anonymous data access
+- Useful when destructuring
+- Can contain any number of fields
+  - Use `struct` when more than 2 or 3 fields
 
 ### `Option`
-* A type that may be one of two things
-    * Some data of a specified type
-    * Nothing
-* Used in scenarios where data may not be required or is unavailable
-    * Unable to find something
-    * Ran out of items in a list
-    * Form fields not filled out
+
+- A type that may be one of two things
+  - Some data of a specified type
+  - Nothing
+- Used in scenarios where data may not be required or is unavailable
+  - Unable to find something
+  - Ran out of items in a list
+  - Form fields not filled out
 
 **Definition:**
+
 ```rust
 enum Option<T> {
     Some(T),
@@ -549,6 +590,7 @@ enum Option<T> {
 ```
 
 **Example:**
+
 ```rust
 struct Customer {
     age: Option<i32>,
@@ -566,6 +608,7 @@ match becky.age {
     None => println!("customer age not provided"),
 }
 ```
+
 ```rust
 struct GroceryItem {
     name: String,
@@ -588,15 +631,17 @@ fn find_quantity(name: &str) -> Option<i32> {
 ```
 
 #### `Option` Recap
-* `Option` represents either some data or nothing
-    * `Some(variable_name)`
-        * Data is available
-    * `None`
-        * No data is available
-* Useful when needing to work with optional data
-* use `Option<type>` to declare an optional type
+
+- `Option` represents either some data or nothing
+  - `Some(variable_name)`
+    - Data is available
+  - `None`
+    - No data is available
+- Useful when needing to work with optional data
+- use `Option<type>` to declare an optional type
 
 #### `Option` Demo
+
 ```rust
 struct Survey {
     q1: Option<i32>,
@@ -627,14 +672,16 @@ fn main() {
 ```
 
 ### `Result`
-* A data type that contains one of two types of data:
-    * _**Successful**_ data
-    * _**Error**_ data
-* Used in scenarios where an action needs to be taken, but has the possibility of failure
-    * Copying a file
-    * Connecting to a website
+
+- A data type that contains one of two types of data:
+  - _**Successful**_ data
+  - _**Error**_ data
+- Used in scenarios where an action needs to be taken, but has the possibility of failure
+  - Copying a file
+  - Connecting to a website
 
 **Definition:**
+
 ```rust
 enum Result<T, E> {
     Ok(T),
@@ -643,6 +690,7 @@ enum Result<T, E> {
 ```
 
 **Example:**
+
 ```rust
 fn get_sound(name: &str) -> Result<SoundData, String> {
     if name == "alert" {
@@ -660,15 +708,17 @@ match sound {
 ```
 
 #### `Result` Recap
-* `Result` represents either success or failure
-    * `Ok(variable_name)`
-        * The operation was completed
-    * `Err(variable_name)`
-        * The operation failed
-* Useful when working with functionality that can potentially fail
-* Use `Result<T,E>` when working with results
+
+- `Result` represents either success or failure
+  - `Ok(variable_name)`
+    - The operation was completed
+  - `Err(variable_name)`
+    - The operation failed
+- Useful when working with functionality that can potentially fail
+- Use `Result<T,E>` when working with results
 
 #### `Result` Demo
+
 ```rust
 #[derive(Debug)]
 enum MenuChoice {
@@ -703,12 +753,14 @@ fn main() {
 ```
 
 ## Expressions
-* Rust is an expression-based language
-    * Most things are evaluated and return some value
-* Expression values coalesce to a single point
-    * Can be used for nesting logic
+
+- Rust is an expression-based language
+  - Most things are evaluated and return some value
+- Expression values coalesce to a single point
+  - Can be used for nesting logic
 
 **Examples:**
+
 ```rust
 let my_num = 3;
 let is_lt_5 = if my_num < 5 {
@@ -754,47 +806,56 @@ let order_placed = match item {
 ```
 
 ### Expressions Recap
-* Expressions allow nested logic
-* `if` and `match` expressions can be nested
-    * Best to not use more than two or three levels
+
+- Expressions allow nested logic
+- `if` and `match` expressions can be nested
+  - Best to not use more than two or three levels
 
 ## Intermediate Memory
+
 **Basic memory refresh:**
-* Memory is stored using binary
-    * Bits: _0_ or _1_
-* Computer optimized for bytes
-    * _1_ byte == _8_ _contiguous bits_
-* Fully contiguous
+
+- Memory is stored using binary
+  - Bits: _0_ or _1_
+- Computer optimized for bytes
+  - _1_ byte == _8_ _contiguous bits_
+- Fully contiguous
 
 ### Addresses
-* All data in memory has an _**address**_
-    * Used to locate data
-    * Always the same - only data changes
-* Usually don't utilize addresses directly
-    * Variables handle most of the work
+
+- All data in memory has an _**address**_
+  - Used to locate data
+  - Always the same - only data changes
+- Usually don't utilize addresses directly
+  - Variables handle most of the work
 
 ### Offsets
-* Items can be located at and address using an _**offset**_
-* Offsets begin at 0
-* Represent the number of bytes away from the original address
-    * Normally deal with indexes instead
+
+- Items can be located at and address using an _**offset**_
+- Offsets begin at 0
+- Represent the number of bytes away from the original address
+  - Normally deal with indexes instead
 
 ![Addresses & Offsets](./images/address&offsets.png)
 
 ### Intermediate Memory Recap
-* Memory uses addresses & offsets
-* Addresses are permanent, data differs
-* Offsets can be used to _**index**_ into some data
+
+- Memory uses addresses & offsets
+- Addresses are permanent, data differs
+- Offsets can be used to _**index**_ into some data
 
 ## Ownership
+
 **Managing memory:**
-* Programs must track memory
-    * If they fail to do so, a _**leak**_ occurs
-* Rust utilizes an _**ownership**_ model to manage memory
-    * The _**owner**_ of memory is responsible for cleaning up the memory
-* Memory can either be _**moved**_ or _**borrowed**_
+
+- Programs must track memory
+  - If they fail to do so, a _**leak**_ occurs
+- Rust utilizes an _**ownership**_ model to manage memory
+  - The _**owner**_ of memory is responsible for cleaning up the memory
+- Memory can either be _**moved**_ or _**borrowed**_
 
 **Example - Move ❌:**
+
 ```rust
 enum Light {
     Bright,
@@ -816,6 +877,7 @@ fn main() {
 ```
 
 **Example - Borrow :white_check_mark::**
+
 ```rust
 enum Light {
     Bright,
@@ -837,22 +899,25 @@ fn main() {
 ```
 
 ### Ownership Recap
-* Memory must be managed in some way to present leaks
-* Rust uses _**ownership**_ to accomplish memory management
-    * The _**owner**_ of data must clean up the memory
-    * This occurs automatically at the end of the scope
-* Default behavior is to _**move**_ memory to a new owner
-    * Use and ampersand _**&**_ to allow code to _**borrow**_ memory
+
+- Memory must be managed in some way to present leaks
+- Rust uses _**ownership**_ to accomplish memory management
+  - The _**owner**_ of data must clean up the memory
+  - This occurs automatically at the end of the scope
+- Default behavior is to _**move**_ memory to a new owner
+  - Use and ampersand _**&**_ to allow code to _**borrow**_ memory
 
 ## Data Structures
 
 ### Vector
-* Multiple pieces of data
-    * Must be the same type
-* Used for list of information
-* CAn add, remove, and traverse the entries
+
+- Multiple pieces of data
+  - Must be the same type
+- Used for list of information
+- CAn add, remove, and traverse the entries
 
 **Example:**
+
 ```rust
 let my_numbers = vec![1, 2, 3];
 
@@ -875,12 +940,14 @@ for num in my_numbers {
 ```
 
 #### Vector Recap
-* Vectors contain multiple pieces of similar data
-* Data can be added or removed
-* The `vec!` macro can be used to make vectors
-* User `for..in` to iterate through items of vector
+
+- Vectors contain multiple pieces of similar data
+- Data can be added or removed
+- The `vec!` macro can be used to make vectors
+- User `for..in` to iterate through items of vector
 
 #### Vector Demo
+
 ```rust
 struct Test {
     score: i32
@@ -901,13 +968,15 @@ fn main() {
 ```
 
 ### Hashmap
-* Collection that stores data as key-value pairs
-    * Data is located using the **key**
-    * The data is the **value**
-* Similar to definitions in a dictionary
-* Very fast to retrieve data using the key
 
-**Example: find data**
+- Collection that stores data as key-value pairs
+  - Data is located using the **key**
+  - The data is the **value**
+- Similar to definitions in a dictionary
+- Very fast to retrieve data using the key
+
+**Example: Find data**
+
 ```rust
 let mut people = HashMap::new();
 people.insert("Susan", 21);
@@ -922,7 +991,8 @@ match people.get("Ed") {
 }
 ```
 
-**Example: iterate**
+**Example: Iterate**
+
 ```rust
 for (person, age) in people.iter() {
     println!("person = {:?}, age = {:?}¨", person, age);
@@ -938,12 +1008,14 @@ for age in people.values() {
 ```
 
 #### Hashmap Recap
-* Store information as key-value pairs
-    * **key** is used to access the **value**
-* Very fast to insert & find data using they key
-* Useful when you need to find information and know exactly where it is (via the key)
+
+- Store information as key-value pairs
+  - **key** is used to access the **value**
+- Very fast to insert & find data using they key
+- Useful when you need to find information and know exactly where it is (via the key)
 
 #### Hashmap Demo
+
 ```rust
 use std::collection::HashMap;
 
@@ -965,12 +1037,14 @@ fn main() {
 ```
 
 ## Type Annotations
-* Required for function signatures
-* Types are usually inferred
-* Can also be specified in code
-    * Explicit type annotations
+
+- Required for function signatures
+- Types are usually inferred
+- Can also be specified in code
+  - Explicit type annotations
 
 **Example - Basic:**
+
 ```rust
 fn print_many(msg: &str, count: i32) { }
 
@@ -986,6 +1060,7 @@ let left_click: Mouse = Mouse::LeftClick;
 ```
 
 **Example - Generics:**
+
 ```rust
 let numbers: Vec<i32> = vec![1, 2, 3];
 let letters: Vec<char> = vec!['a', 'b'];
@@ -997,6 +1072,7 @@ let clicks: Vec<Mouse> = vec![
 ```
 
 ### Type Annotations Recap
-* Type annotations are mostly optional within function bodies
-    * Occasionally required if compiler cannot infer the type
-* Can be specified when using `let` bindings
+
+- Occasionally required if compiler cannot infer the type
+  - Type annotations are mostly optional within function bodies
+- Can be specified when using `let` bindings
