@@ -49,6 +49,8 @@
       - [Hashmap Demo](#hashmap-demo)
   - [Type Annotations](#type-annotations)
     - [Type Annotations Recap](#type-annotations-recap)
+  - [Extra](#extra)
+    - [Basic Closures Demo](#basic-closures-demo)
 
 # Fundamentals
 
@@ -1076,3 +1078,23 @@ let clicks: Vec<Mouse> = vec![
 - Occasionally required if compiler cannot infer the type
   - Type annotations are mostly optional within function bodies
 - Can be specified when using `let` bindings
+
+## Extra
+
+### Basic Closures Demo
+
+```rust
+fn add_fn(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+fn main() {
+
+    let add = |a: i32, b: i32| -> i32 {
+        a + b
+    };
+    let add = |a, b| a + b;
+    let sum = add(1, 1);
+
+}
+```
