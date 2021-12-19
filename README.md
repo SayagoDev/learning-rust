@@ -51,6 +51,7 @@
     - [Type Annotations Recap](#type-annotations-recap)
   - [Extra](#extra)
     - [Basic Closures Demo](#basic-closures-demo)
+    - [Map Combinator Demo](#map-combinator-demo)
 
 # Fundamentals
 
@@ -1096,5 +1097,31 @@ fn main() {
     let add = |a, b| a + b;
     let sum = add(1, 1);
 
+}
+```
+
+### Map Combinator Demo
+
+```rust
+fn maybe_num() -> Option<i32> {
+}
+
+fn maybe_word() -> Option<String> {
+}
+
+fn main() {
+
+    // Without Map Combinator
+    let plus_one = match maybe_num() {
+        Some(num) => Some(num + 1),
+        None => None,
+    };
+
+    // With Map Combinator
+    let plus_one = maybe_num().map(|num| num + 1);
+
+    let word_length = maybe_word()
+        .map(|word| word.len())
+        .map(|len| len * 2);
 }
 ```
