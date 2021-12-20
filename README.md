@@ -1174,7 +1174,7 @@ fn main() {
 
     let new_numbers: Vec<_> = numbers
         .iter()
-        .filter(|num| num <= 3)
+        .filter(|num| num <= &3)
         .collect(); // [1, 2, 3]
 
     let find_me: Option<i32> = numbers
