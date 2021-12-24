@@ -58,6 +58,7 @@
     - [`if let` Demo](#if-let-demo)
     - [`while let` Demo](#while-let-demo)
     - [Modules Demo](#modules-demo)
+    - [Testing Demo](#testing-demo)
 
 # Fundamentals
 
@@ -1312,5 +1313,27 @@ fn main() {
     hello();
     greet::goodbye();
     math::add(1, 1);
+}
+```
+
+### Testing Demo
+
+```rust
+fn all_caps(word: &str) -> String {
+    word.to_uppercase()
+}
+
+fn main() {}
+
+#[cfg(test)]
+mod test {
+    use crate::*;
+
+    #[test]
+    fn check_all_caps() {
+        let result = all_caps("hello");
+        let expected = String::from("HELLO");
+        assert_eq!(result, expected, "string should be all uppercase");
+    }
 }
 ```
