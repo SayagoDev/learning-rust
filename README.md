@@ -57,6 +57,7 @@
     - [Range Demo](#range-demo)
     - [`if let` Demo](#if-let-demo)
     - [`while let` Demo](#while-let-demo)
+    - [Modules Demo](#modules-demo)
 
 # Fundamentals
 
@@ -1276,5 +1277,40 @@ fn main() {
     }
 
     println!("done");
+}
+```
+
+### Modules Demo
+
+```rust
+use std::collections::HashMap; // Only be available to the main function.
+
+mod greet {
+   use std::collections::Hashmap;
+    fn hello() {
+        println!("hello");
+    }
+
+    fn goodbye() {
+        println!("goodbye");
+    }
+}
+
+mod math {
+
+    fn add(a: i32, b: i32) -> i32 {
+        a + b
+    }
+
+    fn sub(a: i32, b: i32) -> i32 {
+        a - b
+    }
+}
+
+fn main() {
+    use greet::hello;
+    hello();
+    greet::goodbye();
+    math::add(1, 1);
 }
 ```
