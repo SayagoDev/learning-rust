@@ -49,6 +49,15 @@
       - [Hashmap Demo](#hashmap-demo)
   - [Type Annotations](#type-annotations)
     - [Type Annotations Recap](#type-annotations-recap)
+  - [Managing Code](#managing-code)
+    - [External Modules](#external-modules)
+      - [Module Details](#module-details)
+      - [File Structure](#file-structure)
+      - [Module Declaration](#module-declaration)
+      - [Accessing Functionality](#accessing-functionality)
+      - [Module Aliases](#module-aliases)
+      - [Re-exporting Modules](#re-exporting-modules)
+      - [External Modules Recap](#external-modules-recap)
   - [Extra](#extra)
     - [Basic Closures Demo](#basic-closures-demo)
     - [Map Combinator Demo](#map-combinator-demo)
@@ -1086,6 +1095,60 @@ let clicks: Vec<Mouse> = vec![
 - Occasionally required if compiler cannot infer the type
   - Type annotations are mostly optional within function bodies
 - Can be specified when using `let` bindings
+
+## Managing Code
+
+### External Modules
+
+- Allows code to be compartmentalized
+  - Organized  source code management
+  - Better collaboration
+- More intuitive coding
+  - Quickly identify where imported code is used
+
+#### Module Details
+
+- Can have any name
+- Hierarchical organization
+- Private by default
+  - Use `pub` keyword to make a module public
+- External modules can be a:
+  - Directory
+    - Must contain _**`mod.rs`**_
+    - Can contain additional modules
+  - File
+
+#### File Structure
+
+![file structure](./images/file_structure.png)
+
+#### Module Declaration
+
+![module declaration](./images/module_declaration.png)
+
+#### Accessing Functionality
+
+![accessing functionality](./images/accessing_functionality.png)
+
+#### Module Aliases
+
+![module aliases](./images/module_aliases.png)
+
+#### Re-exporting Modules
+
+![exporting modules](./images/re-exporting_modules.png)
+
+#### External Modules Recap
+
+- Modules are organized hierarchically
+  - Use _**super**_ to go up one level
+  - Use _**crate**_ to start from the top
+- The _**as**_ keyword can be used to create an alias for a module
+- The _**mod**_ keyword is used to declare a module
+  - No curly braces to external modules
+- Modules can be re-exported with the _**use**_ keyword
+- _**pub**_ indicates the module may be accessed from anywhere
+  - Omitted _**pub**_ restricts to only the containing module and sub-modules
 
 ## Extra
 
