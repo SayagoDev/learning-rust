@@ -54,6 +54,7 @@
     - [Map Combinator Demo](#map-combinator-demo)
     - [`Option` Combinator Pattern Demo](#option-combinator-pattern-demo)
     - [Iterator Demo](#iterator-demo)
+    - [Range Demo](#range-demo)
 
 # Fundamentals
 
@@ -1201,5 +1202,22 @@ fn main() {
         .iter()
         .take(3)
         .collect(); // [1, 2, 3]
+}
+```
+
+### Range Demo
+
+```rust
+fn main() {
+    let range = 1..=3;
+    let range = 1..4;
+
+    for num in 1..4 {
+        println!("{:?}", num);
+    }
+
+    for ch in 'a'..='f' {
+        println!("{:?}", ch);
+    }
 }
 ```
