@@ -56,6 +56,7 @@
     - [Iterator Demo](#iterator-demo)
     - [Range Demo](#range-demo)
     - [`if let` Demo](#if-let-demo)
+    - [`while let` Demo](#while-let-demo)
 
 # Fundamentals
 
@@ -1251,5 +1252,29 @@ fn main() {
     } else {
         println!("it's not red");
     }
+}
+```
+
+### `while let` Demo
+
+```rust
+fn main() {
+    let mut data = Some(3);
+
+    while let Some(i) = data {
+        println!("loop");
+        data = None;
+    }
+
+    ///
+
+    let numbers = vec![1, 2, 3];
+    let mut number_iter = numbers.iter();
+
+    while let Some(num) = number_iter.next() {
+        println!("num = {:?}", num);
+    }
+
+    println!("done");
 }
 ```
