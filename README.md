@@ -55,6 +55,7 @@
     - [`Option` Combinator Pattern Demo](#option-combinator-pattern-demo)
     - [Iterator Demo](#iterator-demo)
     - [Range Demo](#range-demo)
+    - [`if let` Demo](#if-let-demo)
 
 # Fundamentals
 
@@ -1218,6 +1219,37 @@ fn main() {
 
     for ch in 'a'..='f' {
         println!("{:?}", ch);
+    }
+}
+```
+
+### `if let` Demo
+
+```rust
+enum Color {
+    Red,
+    Blue,
+    Green,
+}
+
+fn main() {
+    let maybe_user = Some("Jerry");
+    match maybe_user {
+        Some(user) => println!("user={:?}", user),
+        None => println!("no user"),
+    }
+
+    if let Some(user) = maybe_user {
+        println!("user={:?}", user);
+    } else {
+        println!("no user");
+    }
+
+    let red = Color::Red;
+    if let Color::Red = red {
+        println!("it's red!");
+    } else {
+        println!("it's not red");
     }
 }
 ```
