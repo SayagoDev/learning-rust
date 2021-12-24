@@ -924,7 +924,7 @@ fn main() {
 - Multiple pieces of data
   - Must be the same type
 - Used for list of information
-- CAn add, remove, and traverse the entries
+- Can add, remove, and traverse the entries
 
 **Example:**
 
