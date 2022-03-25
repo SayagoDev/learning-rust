@@ -5,50 +5,29 @@
 - [Fundamentals](#fundamentals)
   - [Data Types](#data-types)
     - [String and &str](#string-and-str)
-      - [Strings Recap](#strings-recap)
-      - [Strings Demo](#strings-demo)
   - [Variables](#variables)
   - [Functions](#functions)
   - [Println Macro](#println-macro)
   - [Control flow using `if`](#control-flow-using-if)
   - [Repetition Using Loops](#repetition-using-loops)
   - [Match](#match)
-    - [Advanced `match` Demo](#advanced-match-demo)
     - [`match` vs `else..if`](#match-vs-elseif)
-    - [Match Recap](#match-recap)
   - [Working With Data](#working-with-data)
     - [Enumeration `enum`](#enumeration-enum)
-      - [Enums Recap](#enums-recap)
     - [Enumeration Revisited](#enumeration-revisited)
-      - [Enumeration Revisited Recap](#enumeration-revisited-recap)
-      - [Enumeration Revisited Demo](#enumeration-revisited-demo)
     - [Structure `struct`](#structure-struct)
-      - [Structs Recap](#structs-recap)
     - [Tuples](#tuples)
-      - [Tuples Recap](#tuples-recap)
     - [`Option`](#option)
-      - [`Option` Recap](#option-recap)
-      - [`Option` Demo](#option-demo)
     - [`Result`](#result)
-      - [`Result` Recap](#result-recap)
-      - [`Result` Demo](#result-demo)
   - [Expressions](#expressions)
-    - [Expressions Recap](#expressions-recap)
   - [Intermediate Memory](#intermediate-memory)
     - [Addresses](#addresses)
     - [Offsets](#offsets)
-    - [Intermediate Memory Recap](#intermediate-memory-recap)
   - [Ownership](#ownership)
-    - [Ownership Recap](#ownership-recap)
   - [Data Structures](#data-structures)
     - [Vector](#vector)
-      - [Vector Recap](#vector-recap)
-      - [Vector Demo](#vector-demo)
     - [Hashmap](#hashmap)
-      - [Hashmap Recap](#hashmap-recap)
-      - [Hashmap Demo](#hashmap-demo)
   - [Type Annotations](#type-annotations)
-    - [Type Annotations Recap](#type-annotations-recap)
   - [Managing Code](#managing-code)
     - [External Modules](#external-modules)
       - [Module Details](#module-details)
@@ -57,7 +36,6 @@
       - [Accessing Functionality](#accessing-functionality)
       - [Module Aliases](#module-aliases)
       - [Re-exporting Modules](#re-exporting-modules)
-      - [External Modules Recap](#external-modules-recap)
   - [Extra](#extra)
     - [Basic Closures Demo](#basic-closures-demo)
     - [Map Combinator Demo](#map-combinator-demo)
@@ -135,13 +113,13 @@ fn main() {
 }
 ```
 
-#### Strings Recap
+**Strings Recap**
 
 - Strings are automatically borrowed
 - Use `.to_owned()` or `String::from()` to create and owned copy of a string slice
 - Use and owned `String` when storing in a `struct`
 
-#### Strings Demo
+**Strings Demo:**
 
 ```rust
 struct LineItem {
@@ -330,7 +308,7 @@ fn main() {
 }
 ```
 
-### Advanced `match` Demo
+**Advanced `match` Demo:**
 
 ```rust
 enum Discount {
@@ -375,7 +353,7 @@ fn main() {
 - `else..if` is <ins>not</ins> checked by the compiler
   - If a new possibility is added, your code may contain a bug
 
-### Match Recap
+**Match Recap**
 
 - Prefer `match` over `else..if` when working with a single variable
 - `match` considers all possibilities
@@ -411,7 +389,7 @@ fn which_way(go: Direction) {
 }
 ```
 
-#### Enums Recap
+**Enums Recap**
 
 - Enums can only be one variant at a time
 - More robust programs when paired with `match`
@@ -450,14 +428,14 @@ enum Discount {
 }
 ```
 
-#### Enumeration Revisited Recap
+**Enumeration Revisited Recap**
 
 - `enum` variants can optionally contain data
   - The data can be another `enum`
 - Can mix plain identifiers and data-containing variants within the same `enum`
 - More than one piece of data can be associated with a variant
 
-#### Enumeration Revisited Demo
+**Enumeration Revisited Demo:**
 
 ```rust
 enum Message {
@@ -547,7 +525,7 @@ fn main() {
 }
 ```
 
-#### Structs Recap
+**Structs Recap**
 
 - Structs deal with multiple pieces of data
 - All fields must be present to create a `struct`
@@ -583,7 +561,7 @@ fn main() {
 }
 ```
 
-#### Tuples Recap
+**Tuples Recap**
 
 - Allow for anonymous data access
 - Useful when destructuring
@@ -650,7 +628,7 @@ fn find_quantity(name: &str) -> Option<i32> {
 }
 ```
 
-#### `Option` Recap
+**`Option` Recap**
 
 - `Option` represents either some data or nothing
   - `Some(variable_name)`
@@ -660,7 +638,7 @@ fn find_quantity(name: &str) -> Option<i32> {
 - Useful when needing to work with optional data
 - use `Option<type>` to declare an optional type
 
-#### `Option` Demo
+**`Option` Demo:**
 
 ```rust
 struct Survey {
@@ -727,7 +705,7 @@ match sound {
 }
 ```
 
-#### `Result` Recap
+**`Result` Recap**
 
 - `Result` represents either success or failure
   - `Ok(variable_name)`
@@ -737,7 +715,7 @@ match sound {
 - Useful when working with functionality that can potentially fail
 - Use `Result<T,E>` when working with results
 
-#### `Result` Demo
+**`Result` Demo:**
 
 ```rust
 #[derive(Debug)]
@@ -825,7 +803,7 @@ let order_placed = match item {
 };
 ```
 
-### Expressions Recap
+**Expressions Recap**
 
 - Expressions allow nested logic
 - `if` and `match` expressions can be nested
@@ -858,7 +836,7 @@ let order_placed = match item {
 
 ![Addresses & Offsets](./images/address&offsets.png)
 
-### Intermediate Memory Recap
+**Intermediate Memory Recap**
 
 - Memory uses addresses & offsets
 - Addresses are permanent, data differs
@@ -866,7 +844,7 @@ let order_placed = match item {
 
 ## Ownership
 
-**Managing memory:**
+**Managing memory**
 
 - Programs must track memory
   - If they fail to do so, a _**leak**_ occurs
@@ -918,7 +896,7 @@ fn main() {
 }
 ```
 
-### Ownership Recap
+**Ownership Recap**
 
 - Memory must be managed in some way to present leaks
 - Rust uses _**ownership**_ to accomplish memory management
@@ -959,14 +937,14 @@ for num in my_numbers {
 }
 ```
 
-#### Vector Recap
+**Vector Recap**
 
 - Vectors contain multiple pieces of similar data
 - Data can be added or removed
 - The `vec!` macro can be used to make vectors
 - User `for..in` to iterate through items of vector
 
-#### Vector Demo
+**Vector Demo:**
 
 ```rust
 struct Test {
@@ -1027,14 +1005,14 @@ for age in people.values() {
 }
 ```
 
-#### Hashmap Recap
+**Hashmap Recap**
 
 - Store information as key-value pairs
   - **key** is used to access the **value**
 - Very fast to insert & find data using they key
 - Useful when you need to find information and know exactly where it is (via the key)
 
-#### Hashmap Demo
+**Hashmap Demo:**
 
 ```rust
 use std::collection::HashMap;
@@ -1091,7 +1069,7 @@ let clicks: Vec<Mouse> = vec![
 ];
 ```
 
-### Type Annotations Recap
+**Type Annotations Recap**
 
 - Occasionally required if compiler cannot infer the type
   - Type annotations are mostly optional within function bodies
@@ -1139,7 +1117,7 @@ let clicks: Vec<Mouse> = vec![
 
 ![exporting modules](./images/re-exporting_modules.png)
 
-#### External Modules Recap
+**External Modules Recap**
 
 - Modules are organized hierarchically
   - Use _**super**_ to go up one level
