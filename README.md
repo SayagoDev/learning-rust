@@ -66,58 +66,57 @@
 - Must use and owned `String` to store in a `struct`
 - Use `&str` when passing to a function
 
-
 <details>
-  <summary><em>Example - Pass to function</em></summary>
+  <summary><strong>Example - Pass to function</strong></summary>
 
-  ```rust
-  fn print_it(data: &str) {
-      println!("{:?}", data);
-  }
+```rust
+fn print_it(data: &str) {
+    println!("{:?}", data);
+}
 
-  fn main() {
-      print_it("a string slice");
-      let owned_string = "owned string".to_owned();
-      let another_owned = String::from("another");
-      print_it(&owned_string);
-      print_it(&another_owned);
-  }
-  ```
+fn main() {
+    print_it("a string slice");
+    let owned_string = "owned string".to_owned();
+    let another_owned = String::from("another");
+    print_it(&owned_string);
+    print_it(&another_owned);
+}
+```
 </details>
 
 <details>
-  <summary><em>Example - Will not work ❌</em></summary>
+  <summary><strong>Example - Will not work ❌</strong></summary>
 
-  ```rust
-  struct Employee {
-      name: &str,
-  }
+```rust
+struct Employee {
+    name: &str,
+}
 
-  fn main() {
-      let emp_name = "Jayson";
-      let emp = Employee {
-          name: emp_name
-      };
-  }
-  ```
+fn main() {
+    let emp_name = "Jayson";
+    let emp = Employee {
+        name: emp_name
+    };
+}
+```
 </details>
 
 <details>
-  <summary><em>Example - Works! ✅</em></summary>
+  <summary><strong>Example - Works! ✅</strong></summary>
 
-  ```rust
-  struct Employee {
-      name: String,
-  }
+```rust
+struct Employee {
+    name: String,
+}
 
-  fn main() {
-      let emp_name = "Jayson".to_owned();
-      let emp_name = String::from("Jayson"); // or
-      let emp = Employee {
-          name: emp_name
-      };
-  }
-  ```
+fn main() {
+    let emp_name = "Jayson".to_owned();
+    let emp_name = String::from("Jayson"); // or
+    let emp = Employee {
+        name: emp_name
+    };
+}
+```
 </details>
 
 **Strings Recap**
@@ -126,7 +125,8 @@
 - Use `.to_owned()` or `String::from()` to create and owned copy of a string slice
 - Use and owned `String` when storing in a `struct`
 
-**Strings Demo:**
+<details>
+  <summary><strong>Strings Demo</strong></summary>
 
 ```rust
 struct LineItem {
@@ -156,6 +156,7 @@ fn main() {
     }
 }
 ```
+</details>
 
 ## Variables
 
