@@ -66,21 +66,24 @@
 - Must use and owned `String` to store in a `struct`
 - Use `&str` when passing to a function
 
-**Example - Pass to function:**
 
-```rust
-fn print_it(data: &str) {
-    println!("{:?}", data);
-}
+<details>
+  <summary>**Example - Pass to function:**</summary>
 
-fn main() {
-    print_it("a string slice");
-    let owned_string = "owned string".to_owned();
-    let another_owned = String::from("another");
-    print_it(&owned_string);
-    print_it(&another_owned);
-}
-```
+  ```rust
+  fn print_it(data: &str) {
+      println!("{:?}", data);
+  }
+
+  fn main() {
+      print_it("a string slice");
+      let owned_string = "owned string".to_owned();
+      let another_owned = String::from("another");
+      print_it(&owned_string);
+      print_it(&another_owned);
+  }
+  ```
+</details>
 
 **Example - Will not work** ❌:
 
