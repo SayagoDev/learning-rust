@@ -1242,7 +1242,8 @@ fn main() {
 }
 ```
 
-### `Option` Combinator Pattern Demo
+<details>
+  <summary><strong><h3><code>Option</code> Combinator Pattern Demo</h3></strong></summary>
 
 ```rust
 fn main() {
@@ -1268,8 +1269,10 @@ fn main() {
     dbg!(unwrapped);
 }
 ```
+</details>
 
-### Iterator Demo
+<details>
+  <summary><strong><h3>Iterator Demo</h3></strong></summary>
 
 ```rust
 fn main() {
@@ -1317,8 +1320,10 @@ fn main() {
         .collect(); // [1, 2, 3]
 }
 ```
+</details>
 
-### Range Demo
+<details>
+  <summary><strong><h3>Range Demo</h3></strong></summary>
 
 ```rust
 fn main() {
@@ -1334,8 +1339,10 @@ fn main() {
     }
 }
 ```
+</details>
 
-### `if let` Demo
+<details>
+  <summary><strong><h3><code>if let</code> Demo</h3></strong></summary>
 
 ```rust
 enum Color {
@@ -1365,8 +1372,10 @@ fn main() {
     }
 }
 ```
+</details>
 
-### `while let` Demo
+<details>
+  <summary><strong><h3><code>while let</code> Demo</h3></strong></summary>
 
 ```rust
 fn main() {
@@ -1389,8 +1398,10 @@ fn main() {
     println!("done");
 }
 ```
+</details>
 
-### Modules Demo
+<details>
+  <summary><strong>Modules Demo</strong></summary>
 
 ```rust
 use std::collections::HashMap; // Only be available to the main function.
@@ -1424,8 +1435,10 @@ fn main() {
     math::add(1, 1);
 }
 ```
+</details>
 
-### Testing Demo
+<details>
+  <summary><strong>Testing Demo</strong></summary>
 
 ```rust
 fn all_caps(word: &str) -> String {
@@ -1446,8 +1459,10 @@ mod test {
     }
 }
 ```
+</details>
 
-### User Input Demo
+<details>
+  <summary><strong>User Input Demo</strong></summary>
 
 ```rust
 use std::io;
@@ -1476,3 +1491,4 @@ fn main() {
     }
 }
 ```
+</details>
