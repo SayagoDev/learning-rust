@@ -1216,7 +1216,8 @@ fn main() {
 ```
 </details>
 
-### Map Combinator Demo
+<details>
+  <summary><strong><h3>Map Combinator Demo</h3></strong></summary>
 
 ```rust
 fn maybe_num() -> Option<i32> {
@@ -1241,6 +1242,7 @@ fn main() {
         .map(|len| len * 2);
 }
 ```
+</details>
 
 <details>
   <summary><strong><h3><code>Option</code> Combinator Pattern Demo</h3></strong></summary>
@@ -1401,7 +1403,7 @@ fn main() {
 </details>
 
 <details>
-  <summary><strong>Modules Demo</strong></summary>
+  <summary><strong><h3>Modules Demo</h3></strong></summary>
 
 ```rust
 use std::collections::HashMap; // Only be available to the main function.
@@ -1438,7 +1440,7 @@ fn main() {
 </details>
 
 <details>
-  <summary><strong>Testing Demo</strong></summary>
+  <summary><strong><h3>Testing Demo</h3></strong></summary>
 
 ```rust
 fn all_caps(word: &str) -> String {
@@ -1462,7 +1464,7 @@ mod test {
 </details>
 
 <details>
-  <summary><strong>User Input Demo</strong></summary>
+  <summary><strong><h3>User Input Demo</h3></strong></summary>
 
 ```rust
 use std::io;
