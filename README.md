@@ -223,10 +223,10 @@ if a > 99 {
 } else {
     println!("Small number");
 }
-
 ```
 
-**Example Nested `if..else`:**
+<details>
+  <summary><strong>Example Nested <code>if..else</code></strong></summary>
 
 ```rust
 let a = 99;
@@ -240,8 +240,11 @@ if a > 99 {
     println!("Small number");
 }
 ```
+</details>
 
-**Example `else..if`:**
+<details>
+  <summary><strong>Example <code>else..if</code></strong></summary>
+
 ```rust
 let a = 99;
 if a > 200 {
@@ -252,6 +255,7 @@ if a > 200 {
     println!("Small number");
 }
 ```
+</details>
 
 ## Repetition Using Loops
 
@@ -260,7 +264,9 @@ if a > 200 {
   - `loop` - infinite loop
   - `while` - conditional loop
 
-**Loop**:
+
+<details>
+  <summary><strong>Loop</strong></summary>
 
 ```rust
 let mut a = 0;
@@ -272,8 +278,10 @@ loop {
     a = a + 1;
 }
 ```
+</details>
 
-**While loop:**
+<details>
+  <summary><strong>While loop</strong></summary>
 
 ```rust
 let mut a = 0;
@@ -282,6 +290,7 @@ while a != 5 {
     a = a + 1;
 }
 ```
+</details>
 
 ## Match
 
@@ -290,7 +299,8 @@ while a != 5 {
 - Exhaustive
   - All options must be accounted for
 
-**Example with boolean:**
+<details>
+  <summary><strong>Example with boolean</strong></summary>
 
 ```rust
 fn main() {
@@ -301,8 +311,10 @@ fn main() {
     }
 }
 ```
+</details>
 
-**Example with int:**
+<details>
+  <summary><strong>Example with int</strong></summary>
 
 ```rust
 fn main() {
@@ -315,8 +327,11 @@ fn main() {
     }
 }
 ```
+</details>
 
-**Advanced `match` Demo:**
+
+<details>
+  <summary><strong>Advanced <code>match</code> Demo</strong></summary>
 
 ```rust
 enum Discount {
@@ -353,6 +368,7 @@ fn main() {
     }
 }
 ```
+</details>
 
 ### `match` vs `else..if`
 
@@ -377,7 +393,8 @@ fn main() {
 - Provides information about your program to the compiler
   - More robust programs
 
-**Example:**
+<details>
+  <summary><strong>Example</strong></summary>
 
 ```rust
 enum Direction {
@@ -396,6 +413,7 @@ fn which_way(go: Direction) {
     }
 }
 ```
+</details>
 
 **Enums Recap**
 
@@ -410,7 +428,9 @@ fn which_way(go: Direction) {
 - `enum` is not limited to just plain variants
   - Each variant can optionally contain additional data
 
-**Example:**
+
+<details>
+  <summary><strong>Example</strong></summary>
 
 ```rust
 enum Mouse {
@@ -435,6 +455,7 @@ enum Discount {
     Custom(String),
 }
 ```
+</details>
 
 **Enumeration Revisited Recap**
 
@@ -443,7 +464,8 @@ enum Discount {
 - Can mix plain identifiers and data-containing variants within the same `enum`
 - More than one piece of data can be associated with a variant
 
-**Enumeration Revisited Demo:**
+<details>
+  <summary><strong>Enumeration Revisited Demo</strong></summary>
 
 ```rust
 enum Message {
@@ -505,6 +527,7 @@ fn main() {
     state.process(Message::Quit);
 }
 ```
+</details>
 
 ### Structure `struct`
 
@@ -514,7 +537,9 @@ fn main() {
 - Makes working with data easier
   - Similar data can be grouped together
 
-**Example:**
+<details>
+  <summary><strong>Example</strong></summary>
+
 ```rust
 struct ShippingBox {
     depth: i32,
@@ -532,6 +557,7 @@ fn main() {
     println!("the box is {:?} units tall", tall);
 }
 ```
+</details>
 
 **Structs Recap**
 
@@ -547,7 +573,8 @@ fn main() {
 - Useful to return paris of data from functions
 - Can be "destructured" easily into variables
 
-**Example:**
+<details>
+  <summary><strong>Example</strong></summary>
 
 ```rust
 enum Access {
@@ -568,6 +595,7 @@ fn main() {
     let (employee, access) = ("Jake", Access::Full);
 }
 ```
+</details>
 
 **Tuples Recap**
 
@@ -595,7 +623,8 @@ enum Option<T> {
 }
 ```
 
-**Example:**
+<details>
+  <summary><strong>Example</strong></summary>
 
 ```rust
 struct Customer {
@@ -635,6 +664,7 @@ fn find_quantity(name: &str) -> Option<i32> {
     None
 }
 ```
+</details>
 
 **`Option` Recap**
 
@@ -646,7 +676,8 @@ fn find_quantity(name: &str) -> Option<i32> {
 - Useful when needing to work with optional data
 - use `Option<type>` to declare an optional type
 
-**`Option` Demo:**
+<details>
+  <summary><strong><code>Option</code> Demo</strong></summary>
 
 ```rust
 struct Survey {
@@ -676,6 +707,7 @@ fn main() {
     }
 }
 ```
+</details>
 
 ### `Result`
 
@@ -695,7 +727,8 @@ enum Result<T, E> {
 }
 ```
 
-**Example:**
+<details>
+  <summary><strong>Example</strong></summary>
 
 ```rust
 fn get_sound(name: &str) -> Result<SoundData, String> {
@@ -712,6 +745,7 @@ match sound {
     Err(e) => println!("error: {:?}", e),
 }
 ```
+</details>
 
 **`Result` Recap**
 
@@ -723,7 +757,8 @@ match sound {
 - Useful when working with functionality that can potentially fail
 - Use `Result<T,E>` when working with results
 
-**`Result` Demo:**
+<details>
+  <summary><strong><code>Result</code> Demo</strong></summary>
 
 ```rust
 #[derive(Debug)]
@@ -757,6 +792,7 @@ fn main() {
     println!("choice value = {:?}", choice);
 }
 ```
+</details>
 
 ## Expressions
 
@@ -765,7 +801,8 @@ fn main() {
 - Expression values coalesce to a single point
   - Can be used for nesting logic
 
-**Examples:**
+<details>
+  <summary><strong>Examples</strong></summary>
 
 ```rust
 let my_num = 3;
@@ -810,6 +847,7 @@ let order_placed = match item {
     _ => true,
 };
 ```
+</details>
 
 **Expressions Recap**
 
@@ -860,7 +898,9 @@ let order_placed = match item {
   - The _**owner**_ of memory is responsible for cleaning up the memory
 - Memory can either be _**moved**_ or _**borrowed**_
 
-**Example - Move ❌:**
+
+<details>
+  <summary><strong>Example - Move ❌</strong></summary>
 
 ```rust
 enum Light {
@@ -881,8 +921,10 @@ fn main() {
     display_light(dull);
 }
 ```
+</details>
 
-**Example - Borrow :white_check_mark::**
+<details>
+  <summary><strong>Example - Borrow ✅</strong></summary>
 
 ```rust
 enum Light {
@@ -903,6 +945,7 @@ fn main() {
     display_light(&dull);
 }
 ```
+</details>
 
 **Ownership Recap**
 
@@ -922,7 +965,8 @@ fn main() {
 - Used for list of information
 - Can add, remove, and traverse the entries
 
-**Example:**
+<details>
+  <summary><strong>Example</strong></summary>
 
 ```rust
 let my_numbers = vec![1, 2, 3];
@@ -944,6 +988,7 @@ for num in my_numbers {
     println!("{:?}", num);
 }
 ```
+</details>
 
 **Vector Recap**
 
@@ -952,7 +997,8 @@ for num in my_numbers {
 - The `vec!` macro can be used to make vectors
 - User `for..in` to iterate through items of vector
 
-**Vector Demo:**
+<details>
+  <summary><strong>Vector Demo</strong></summary>
 
 ```rust
 struct Test {
@@ -972,6 +1018,7 @@ fn main() {
     }
 }
 ```
+</details>
 
 ### Hashmap
 
@@ -981,7 +1028,8 @@ fn main() {
 - Similar to definitions in a dictionary
 - Very fast to retrieve data using the key
 
-**Example: Find data**
+<details>
+  <summary><strong>Example - Find data</strong></summary>
 
 ```rust
 let mut people = HashMap::new();
@@ -996,8 +1044,10 @@ match people.get("Ed") {
     None => println!("not found"),
 }
 ```
+</details>
 
-**Example: Iterate**
+<details>
+  <summary><strong>Example - Iterate</strong></summary>
 
 ```rust
 for (person, age) in people.iter() {
@@ -1012,6 +1062,7 @@ for age in people.values() {
     println!("age = {:?}", age);
 }
 ```
+</details>
 
 **Hashmap Recap**
 
@@ -1020,7 +1071,8 @@ for age in people.values() {
 - Very fast to insert & find data using they key
 - Useful when you need to find information and know exactly where it is (via the key)
 
-**Hashmap Demo:**
+<details>
+  <summary><strong>Hashmap Demo</strong></summary>
 
 ```rust
 use std::collection::HashMap;
@@ -1041,6 +1093,7 @@ fn main() {
     }
 }
 ```
+</details>
 
 ## Type Annotations
 
@@ -1049,7 +1102,8 @@ fn main() {
 - Can also be specified in code
   - Explicit type annotations
 
-**Example - Basic:**
+<details>
+  <summary><strong>Example - Basic</strong></summary>
 
 ```rust
 fn print_many(msg: &str, count: i32) { }
@@ -1064,8 +1118,10 @@ let num: i32 = 15;
 let a: char = 'a';
 let left_click: Mouse = Mouse::LeftClick;
 ```
+</details>
 
-**Example - Generics:**
+<details>
+  <summary><strong>Example - Generics</strong></summary>
 
 ```rust
 let numbers: Vec<i32> = vec![1, 2, 3];
@@ -1076,6 +1132,7 @@ let clicks: Vec<Mouse> = vec![
     Mouse::MiddleClick,
 ];
 ```
+</details>
 
 **Type Annotations Recap**
 
@@ -1139,7 +1196,8 @@ let clicks: Vec<Mouse> = vec![
 
 ## Extra
 
-### Basic Closures Demo
+<details>
+  <summary><strong><h3>Basic Closures Demo</h3></strong></summary>
 
 ```rust
 fn add_fn(a: i32, b: i32) -> i32 {
@@ -1156,6 +1214,7 @@ fn main() {
 
 }
 ```
+</details>
 
 ### Map Combinator Demo
 
