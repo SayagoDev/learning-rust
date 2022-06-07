@@ -68,7 +68,7 @@
 
 
 <details>
-  <summary>**Example - Pass to function:**</summary>
+  <summary><em>Example - Pass to function</em></summary>
 
   ```rust
   fn print_it(data: &str) {
@@ -85,36 +85,40 @@
   ```
 </details>
 
-**Example - Will not work** ❌:
+<details>
+  <summary><em>Example - Will not work ❌</em></summary>
 
-```rust
-struct Employee {
-    name: &str,
-}
+  ```rust
+  struct Employee {
+      name: &str,
+  }
 
-fn main() {
-    let emp_name = "Jayson";
-    let emp = Employee {
-        name: emp_name
-    };
-}
-```
+  fn main() {
+      let emp_name = "Jayson";
+      let emp = Employee {
+          name: emp_name
+      };
+  }
+  ```
+</details>
 
-**Example - Works!** ✅:
+<details>
+  <summary><em>Example - Works! ✅</em></summary>
 
-```rust
-struct Employee {
-    name: String,
-}
+  ```rust
+  struct Employee {
+      name: String,
+  }
 
-fn main() {
-    let emp_name = "Jayson".to_owned();
-    let emp_name = String::from("Jayson"); // or
-    let emp = Employee {
-        name: emp_name
-    };
-}
-```
+  fn main() {
+      let emp_name = "Jayson".to_owned();
+      let emp_name = String::from("Jayson"); // or
+      let emp = Employee {
+          name: emp_name
+      };
+  }
+  ```
+</details>
 
 **Strings Recap**
 
